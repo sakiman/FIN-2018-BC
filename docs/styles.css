@@ -26,8 +26,9 @@ h1 {
 }
 
 .tree-item {
+    position: relative;
+    padding-left: 24px;  /* 為展開/收合按鈕預留空間 */
     margin: 4px 0;
-    padding: 2px 0;
 }
 
 .tree-container {
@@ -39,8 +40,10 @@ h1 {
 }
 
 .tree-content {
-    display: flex;
-    align-items: center;
+    display: block;
+    min-height: 34px;
+    line-height: 1.5;
+    padding: 5px 0;
     cursor: pointer;
     padding: 2px 4px;
     border-radius: 4px;
@@ -54,22 +57,23 @@ h1 {
 }
 
 .toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 24px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
     cursor: pointer;
-    color: #666;
-    background-color: #f5f5f5;
-    border-radius: 50%;
-    transition: background-color 0.2s;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
 }
 
 .toggle-btn i {
-    font-size: 14px;
-    line-height: 1;
+    line-height: inherit;
+    vertical-align: middle;
 }
 
 .toggle-btn:hover {
@@ -81,9 +85,18 @@ h1 {
 }
 
 .tree-title {
+    display: inline-block;
+    min-height: 34px;
+    line-height: 34px;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
     color: #333;
-    padding-top: 2px;
-    margin-right: 4px;
+}
+
+.tree-title.multiline {
+    line-height: 1.5;
+    padding: 5px 0;
 }
 
 .level-0 > .tree-content > .tree-title {
@@ -163,28 +176,32 @@ h1 {
 }
 
 .sign-field {
-    margin: 2px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin: 5px 0;
+    min-height: 34px;
 }
 
 .sign-field label {
-    min-width: 100px;
-    font-weight: 500;
-    color: #666;
+    display: inline-block;
+    min-width: 80px;
+    margin-right: 10px;
+    height: 34px;
+    line-height: 34px;
+    vertical-align: baseline;
 }
 
 .sign-field select {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
+    height: 34px;
+    padding: 0 10px;
+    margin: 0;
+    vertical-align: baseline;
 }
 
-.sign-field select:hover {
-    border-color: #aaa;
+.sign-field span {
+    height: 34px;
+    line-height: 34px;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
 }
 
 .sign-info {
