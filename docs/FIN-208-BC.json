@@ -1,0 +1,342 @@
+{
+  "level": "0",
+  "title": "政府標單或法人採購標案 - 印鑑用印前申請之檢核表",
+  "showflexstrings": "N",
+  "showflexdates": "N",
+  "flexstrings": null,
+  "flexdate": null,
+  "signchildren": [
+    {
+      "show": "N",
+      "signlevel": "1",
+      "Y/N/NA": null,
+      "signer": null,
+      "signdate": null,
+      "signchildren": [
+        {
+          "show": "N",
+          "signlevel": "2",
+          "Y/N/NA": null,
+          "signer": null,
+          "signdate": null,
+          "signchildren": []
+        }
+      ]
+    }
+  ],
+  "children": [
+    {
+      "level": "1",
+      "title": "標案投標/合約簽屬前用印之作業:",
+      "showflexstrings": "N",
+      "showflexdates": "N",
+      "flexstrings": null,
+      "flexdate": null,
+      "signchildren": [
+        {
+          "show": "N",
+          "signlevel": "1",
+          "Y/N/NA": null,
+          "signer": null,
+          "signdate": null,
+          "signchildren": [
+            {
+              "show": "N",
+              "signlevel": "2",
+              "Y/N/NA": null,
+              "signer": null,
+              "signdate": null,
+              "signchildren": []
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "level": "2",
+          "title": "是否已確實依招標文件規定審查投標文件，包括:",
+          "showflexstrings": "N",
+          "showflexdates": "N",
+          "flexstrings": null,
+          "flexdate": null,
+          "signchildren": [
+            {
+              "show": "N",
+              "signlevel": "1",
+              "Y/N/NA": null,
+              "signer": null,
+              "signdate": null,
+              "signchildren": [
+                {
+                  "show": "N",
+                  "signlevel": "2",
+                  "Y/N/NA": null,
+                  "signer": null,
+                  "signdate": null,
+                  "signchildren": []
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "level": "3",
+              "title": "(a) 投標須知 (一般條款 & 特別條款)、主契約樣搞",
+              "showflexstrings": "N",
+              "showflexdates": "N",
+              "flexstrings": null,
+              "flexdate": null,
+              "signchildren": [
+                {
+                  "show": "Y",
+                  "signlevel": "1",
+                  "Y/N/NA": null,
+                  "signer": null,
+                  "signdate": null,
+                  "signchildren": [
+                    {
+                      "show": "Y",
+                      "signlevel": "2",
+                      "Y/N/NA": null,
+                      "signer": null,
+                      "signdate": null,
+                      "signchildren": []
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            },
+            {
+              "level": "3",
+              "title": "(b) 履約能力 (資格) 審核，包括:",
+              "showflexstrings": "N",
+              "showflexdates": "N",
+              "flexstrings": null,
+              "flexdate": null,
+              "signchildren": [
+                {
+                  "show": "N",
+                  "signlevel": "1",
+                  "Y/N/NA": null,
+                  "signer": null,
+                  "signdate": null,
+                  "signchildren": [
+                    {
+                      "show": "N",
+                      "signlevel": "2",
+                      "Y/N/NA": null,
+                      "signer": null,
+                      "signdate": null,
+                      "signchildren": []
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "level": "4",
+                  "title": "(i) 投標項目或範圍是否需取得相關技術認證資格，符合招標文件規定?",
+                  "showflexstrings": "N",
+                  "showflexdates": "N",
+                  "flexstrings": null,
+                  "flexdate": null,
+                  "signchildren": [
+                    {
+                      "show": "N",
+                      "signlevel": "1",
+                      "Y/N/NA": null,
+                      "signer": null,
+                      "signdate": null,
+                      "signchildren": [
+                        {
+                          "show": "N",
+                          "signlevel": "2",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": []
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "level": "5",
+                      "title": "發證單位",
+                      "showflexstrings": "Y",
+                      "showflexdates": "N",
+                      "flexstrings": null,
+                      "flexdate": null,
+                      "signchildren": [
+                        {
+                          "show": "Y",
+                          "signlevel": "1",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": [
+                            {
+                              "show": "Y",
+                              "signlevel": "2",
+                              "Y/N/NA": null,
+                              "signer": null,
+                              "signdate": null,
+                              "signchildren": []
+                            }
+                          ]
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "level": "4",
+                  "title": "(ii) 投標需檢附(i)項目之認證文件是否仍在認證效期內?",
+                  "showflexstrings": "N",
+                  "showflexdates": "N",
+                  "flexstrings": null,
+                  "flexdate": null,
+                  "signchildren": [
+                    {
+                      "show": "N",
+                      "signlevel": "1",
+                      "Y/N/NA": null,
+                      "signer": null,
+                      "signdate": null,
+                      "signchildren": [
+                        {
+                          "show": "N",
+                          "signlevel": "2",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": []
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "level": "5",
+                      "title": "有效日期",
+                      "showflexstrings": "N",
+                      "showflexdates": "Y",
+                      "flexstrings": null,
+                      "flexdate": null,
+                      "signchildren": [
+                        {
+                          "show": "Y",
+                          "signlevel": "1",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": [
+                            {
+                              "show": "Y",
+                              "signlevel": "2",
+                              "Y/N/NA": null,
+                              "signer": null,
+                              "signdate": null,
+                              "signchildren": []
+                            }
+                          ]
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "level": "5",
+                      "title": "實驗室名稱",
+                      "showflexstrings": "Y",
+                      "showflexdates": "N",
+                      "flexstrings": null,
+                      "flexdate": null,
+                      "signchildren": [
+                        {
+                          "show": "Y",
+                          "signlevel": "1",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": [
+                            {
+                              "show": "Y",
+                              "signlevel": "2",
+                              "Y/N/NA": null,
+                              "signer": null,
+                              "signdate": null,
+                              "signchildren": []
+                            }
+                          ]
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "level": "4",
+                  "title": "(iii) 標單中是否對執行人員要求技能訓練或專門資格證明?",
+                  "showflexstrings": "N",
+                  "showflexdates": "N",
+                  "flexstrings": null,
+                  "flexdate": null,
+                  "signchildren": [
+                    {
+                      "show": "Y",
+                      "signlevel": "1",
+                      "Y/N/NA": null,
+                      "signer": null,
+                      "signdate": null,
+                      "signchildren": [
+                        {
+                          "show": "Y",
+                          "signlevel": "2",
+                          "Y/N/NA": null,
+                          "signer": null,
+                          "signdate": null,
+                          "signchildren": []
+                        }
+                      ]
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "title": "是否了解招標契約文件等履約項目或標的之驗收，與驗收紀錄所記載事項…等規定，如政府採購法，政府採購法施行細則，或中央機關未達公告金額採購招標辦法..等要求?",
+          "showflexstrings": "N",
+          "showflexdates": "N",
+          "flexstrings": null,
+          "flexdate": null,
+          "signchildren": [
+            {
+              "show": "Y",
+              "signlevel": "1",
+              "Y/N/NA": null,
+              "signer": null,
+              "signdate": null,
+              "signchildren": [
+                {
+                  "show": "Y",
+                  "signlevel": "2",
+                  "Y/N/NA": null,
+                  "signer": null,
+                  "signdate": null,
+                  "signchildren": []
+                }
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}
