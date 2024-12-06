@@ -337,6 +337,34 @@
           "children": []
         }
       ]
+    },
+    {
+      "level": "1",
+      "title": "投標/合約之履約管理內容:",
+      "showflexstrings": "N",
+      "showflexdates": "N",
+      "flexstrings": null,
+      "flexdate": null,
+      "signchildren": [
+            {
+              "show": "N",
+              "signlevel": "1",
+              "Y/N/NA": null,
+              "signer": null,
+              "signdate": null,
+              "signchildren": [
+                {
+                  "show": "N",
+                  "signlevel": "2",
+                  "Y/N/NA": null,
+                  "signer": null,
+                  "signdate": null,
+                  "signchildren": []
+                }
+              ]
+            }
+          ],
+          "children": []
     }
   ]
 }
