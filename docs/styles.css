@@ -41,9 +41,9 @@ h1 {
 
 .tree-content {
     display: block;
-    min-height: 34px;
+    min-height: 24px;
     line-height: 1.5;
-    padding: 5px 0;
+    padding: 2px 0;
     cursor: pointer;
     padding: 2px 4px;
     border-radius: 4px;
@@ -62,8 +62,8 @@ h1 {
     top: 0;
     display: inline-block;
     width: 24px;
-    height: 34px;
-    line-height: 34px;
+    height: 24px;
+    line-height: 24px;
     text-align: center;
     cursor: pointer;
     vertical-align: baseline;
@@ -86,8 +86,8 @@ h1 {
 
 .tree-title {
     display: inline-block;
-    min-height: 34px;
-    line-height: 34px;
+    min-height: 24px;
+    line-height: 24px;
     vertical-align: baseline;
     margin: 0;
     padding: 0;
@@ -96,7 +96,7 @@ h1 {
 
 .tree-title.multiline {
     line-height: 1.5;
-    padding: 5px 0;
+    padding: 2px 0;
 }
 
 .level-0 > .tree-content > .tree-title {
@@ -177,28 +177,28 @@ h1 {
 
 .sign-field {
     margin: 5px 0;
-    min-height: 34px;
+    min-height: 24px;
 }
 
 .sign-field label {
     display: inline-block;
     min-width: 80px;
     margin-right: 10px;
-    height: 34px;
-    line-height: 34px;
+    height: 24px;
+    line-height: 24px;
     vertical-align: baseline;
 }
 
 .sign-field select {
-    height: 34px;
+    height: 24px;
     padding: 0 10px;
     margin: 0;
     vertical-align: baseline;
 }
 
 .sign-field span {
-    height: 34px;
-    line-height: 34px;
+    height: 24px;
+    line-height: 24px;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
