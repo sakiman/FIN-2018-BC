@@ -1,10 +1,10 @@
 # FIN 政府標單或法人採購標案用印前檢核作業
-![](https://img.shields.io/badge/JSON-555?logo=json)
+![](https://img.shields.io/badge/Project-FIN--2018--BC-orange)
 
 ## 1. 專案結構和功能
 - 這是一個用於政府標單或法人採購標案的印鑑用印前申請檢核表的網頁應用程式
 - 使用純前端技術架構（HTML + CSS + JavaScript）
-- 資料儲存在 [FIN-208-BC.json](cci:7://file:///c:/Users/Sankalp_Chang/Downloads/_Python/__Sankalp__/FIN-2018-BC/docs/FIN-208-BC.json:0:0-0:0) 檔案中
+- 資料儲存在 [FIN-208-BC.json](https://github.com/sakiman/FIN-2018-BC/blob/main/docs/FIN-208-BC.json) 檔案中
 
 ## 2. index.html 分析
 - 基本的 HTML5 結構
