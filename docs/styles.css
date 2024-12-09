@@ -1,0 +1,414 @@
+body {
+    font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tree-view {
+    padding: 10px;
+}
+
+.tree-item {
+    position: relative;
+    padding-left: 24px;  /* 為展開/收合按鈕預留空間 */
+    margin: 4px 0;
+}
+
+.tree-container {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.tree-content {
+    display: block;
+    min-height: 24px;
+    line-height: 1.5;
+    padding: 2px 0;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    word-break: break-word;
+    overflow: visible;
+}
+
+.tree-content:hover {
+    background-color: #f0f0f0;
+}
+
+.toggle-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+}
+
+.toggle-btn i {
+    line-height: inherit;
+    vertical-align: middle;
+}
+
+.toggle-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.toggle-btn.invisible {
+    visibility: hidden;
+}
+
+.tree-title {
+    display: inline-block;
+    min-height: 24px;
+    line-height: 24px;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.tree-title.multiline {
+    line-height: 1.5;
+    padding: 2px 0;
+}
+
+.level-0 > .tree-content > .tree-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.level-1 > .tree-content > .tree-title {
+    font-size: 1.1em;
+    color: #34495e;
+}
+
+.level-2 > .tree-content > .tree-title {
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+.children {
+    margin-left: 28px;
+    border-left: 1px dashed #ddd;
+    padding-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.node-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    opacity: 1;
+    overflow: visible;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.node-content.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.toggle-btn i {
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.children-container {
+    flex: 1;
+}
+
+.signchildren-container {
+    flex: 1;
+    padding-left: 20px;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 2px 0;
+}
+
+.container-title {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.sign-item {
+    margin: 2px 0;
+    padding: 4px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #007bff;
+}
+
+.sign-field {
+    margin: 5px 0;
+    min-height: 24px;
+}
+
+.sign-field label {
+    display: inline-block;
+    min-width: 80px;
+    margin-right: 10px;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: baseline;
+}
+
+.sign-field select {
+    height: 24px;
+    padding: 0 10px;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+.sign-field span {
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.sign-info {
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+input.flex-input {
+    width: 300px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input.flex-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+input.date-input {
+    width: 150px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input.date-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.flatpickr-calendar {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+    padding: 8px;
+}
+
+.flatpickr-months {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: #333;
+}
+
+.flatpickr-current-month {
+    font-size: 16px;
+    padding: 8px 0;
+}
+
+.flatpickr-weekday {
+    background: white;
+    color: #666;
+    font-size: 14px;
+}
+
+.flatpickr-day {
+    color: #333;
+    border-radius: 4px;
+}
+
+.flatpickr-day:hover {
+    background: #f0f0f0;
+}
+
+.flatpickr-day.selected {
+    background: #007bff;
+    color: white;
+    border: none;
+}
+
+.flatpickr-day.today {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.flatpickr-day.today:hover {
+    background: #f0f0f0;
+    color: #007bff;
+}
+
+.flatpickr-next-month, .flatpickr-prev-month {
+    fill: #666;
+    padding: 8px;
+}
+
+.flatpickr-next-month:hover, .flatpickr-prev-month:hover {
+    fill: #333;
+}
+
+/* 基本層級縮排 */
+.level-1 {
+    margin-left: 30px;
+}
+
+.level-2 {
+    margin-left: 60px;
+}
+
+.level-3 {
+    margin-left: 90px;
+}
+
+.level-4 {
+    margin-left: 120px;
+}
+
+.level-5 {
+    margin-left: 150px;
+}
+
+/* 調整簽核容器的位置，避免重複縮排 */
+.signchildren-container {
+    margin-left: 0 !important;
+}
+
+/* 確保子節點容器不會重複縮排 */
+.children-container {
+    margin-left: 0 !important;
+}
+
+.node-content {
+    margin-left: 0 !important;
+}
+
+/* 簽核項目樣式 */
+.sign-level-1 {
+    margin-left: 20px;
+}
+
+.sign-level-2 {
+    margin-left: 40px;
+}
+
+.sign-level-3 {
+    margin-left: 60px;
+}
+
+.sign-level-4 {
+    margin-left: 80px;
+}
+
+.sign-level-5 {
+    margin-left: 100px;
+}
+
+.sign-field select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.sign-item.disabled {
+    opacity: 0.7;
+    background-color: #f8f8f8;
+}
+
+.sign-item.disabled .sign-field select {
+    pointer-events: none;
+    background-color: #f5f5f5;
+}
+
+.btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn i {
+    font-size: 16px;
+}
+
+#addButton {
+    display: none;
+}
