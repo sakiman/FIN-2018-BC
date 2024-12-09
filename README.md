@@ -1,5 +1,5 @@
 # FIN 政府標單或法人採購標案用印前檢核作業
-![](https://img.shields.io/badge/FIN%2D2018%2DBC-000000?logo=python)
+![](https://img.shields.io/badge/JSON-555?logo=json)
 
 ## 1. 專案結構和功能
 - 這是一個用於政府標單或法人採購標案的印鑑用印前申請檢核表的網頁應用程式
