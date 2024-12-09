@@ -29,7 +29,7 @@ function createSignItem(signChild, parentSelect = null) {
         // 建立下拉選單
         const selectField = document.createElement('div');
         selectField.className = 'sign-field';
-        
+
         // 如果有 flexstrings 且為 "Y"，添加文字輸入框
         if (signChild.flexstrings === "Y") {
             const flexInput = document.createElement('input');
@@ -38,19 +38,19 @@ function createSignItem(signChild, parentSelect = null) {
             flexInput.placeholder = '請輸入文字...';
             selectField.appendChild(flexInput);
         }
-        
+
         const selectLabel = document.createElement('label');
         // 根據 signlevel 設定不同的標籤文字
-        selectLabel.textContent = signChild.signlevel === "1" ? "初審主管:" : 
-                                signChild.signlevel === "2" ? "BU Head:" : 
-                                "Y/N/NA:";
-        
+        selectLabel.textContent = signChild.signlevel === "1" ? "初審:" :
+            signChild.signlevel === "2" ? "複審:" :
+                "Y/N/NA:";
+
         const select = document.createElement('select');
         // 如果有父層級且父層級為空白，則禁用此下拉選單
         if (parentSelect && parentSelect.value === '') {
             select.disabled = true;
         }
-        
+
         ['', 'Y', 'N', 'NA'].forEach(option => {
             const opt = document.createElement('option');
             opt.value = option;
@@ -68,24 +68,24 @@ function createSignItem(signChild, parentSelect = null) {
         // 建立簽核者和日期欄位
         const signerField = document.createElement('div');
         signerField.className = 'sign-field' + (select.value === '' ? ' hidden-field' : '');
-        
+
         const signerLabel = document.createElement('label');
         signerLabel.textContent = '簽核者:';
         const signerValue = document.createElement('span');
         signerValue.textContent = select.value ? 'Sankalp' : '';
-        
+
         signerField.appendChild(signerLabel);
         signerField.appendChild(signerValue);
         signItem.appendChild(signerField);
 
         const dateField = document.createElement('div');
         dateField.className = 'sign-field' + (select.value === '' ? ' hidden-field' : '');
-        
+
         const dateLabel = document.createElement('label');
         dateLabel.textContent = '簽核日期:';
         const dateValue = document.createElement('span');
         dateValue.textContent = select.value ? getCurrentDateTime() : '';
-        
+
         dateField.appendChild(dateLabel);
         dateField.appendChild(dateValue);
         signItem.appendChild(dateField);
@@ -95,7 +95,7 @@ function createSignItem(signChild, parentSelect = null) {
         if (signChild.signchildren && signChild.signchildren.length > 0) {
             childrenContainer = document.createElement('div');
             childrenContainer.className = 'signchildren-nested';
-            
+
             signChild.signchildren.forEach(childSign => {
                 if (childSign.show === "Y") {
                     const childItem = createSignItem(childSign, select);
@@ -115,7 +115,7 @@ function createSignItem(signChild, parentSelect = null) {
                 dateField.classList.add('hidden-field');
                 signerValue.textContent = '';
                 dateValue.textContent = '';
-                
+
                 // 清空並禁用所有子層級
                 if (childrenContainer) {
                     childrenContainer.querySelectorAll('select').forEach(childSelect => {
@@ -123,7 +123,7 @@ function createSignItem(signChild, parentSelect = null) {
                         childSelect.disabled = true;
                         const childSignItem = childSelect.closest('.sign-item');
                         childSignItem.classList.add('disabled');
-                        
+
                         // 觸發子層級的 change 事件，以清空其簽核資訊
                         const event = new Event('change');
                         childSelect.dispatchEvent(event);
@@ -134,7 +134,7 @@ function createSignItem(signChild, parentSelect = null) {
                 dateField.classList.remove('hidden-field');
                 signerValue.textContent = 'Sankalp';
                 dateValue.textContent = getCurrentDateTime();
-                
+
                 // 啟用所有子層級
                 if (childrenContainer) {
                     childrenContainer.querySelectorAll('select').forEach(childSelect => {
@@ -170,7 +170,7 @@ function renderTree(node, parentElement, level = 0) {
     const toggleBtn = document.createElement('span');
     toggleBtn.className = 'toggle-btn';
     toggleBtn.innerHTML = '<i class="fas fa-plus"></i>';
-    
+
     // 建立標題容器
     const titleContainer = document.createElement('div');
     titleContainer.className = 'title-container';
@@ -214,10 +214,10 @@ function renderTree(node, parentElement, level = 0) {
             locale: 'zh_tw',
             dateFormat: 'Y-m-d',
             allowInput: true,
-            onChange: function(selectedDates, dateStr) {
+            onChange: function (selectedDates, dateStr) {
                 node.flexdate = dateStr;
             },
-            onOpen: function(selectedDates, dateStr, instance) {
+            onOpen: function (selectedDates, dateStr, instance) {
                 // 防止事件冒泡
                 const calendar = instance.calendarContainer;
                 calendar.addEventListener('click', (e) => {
@@ -255,7 +255,7 @@ function renderTree(node, parentElement, level = 0) {
     if (node.signchildren && node.signchildren.length > 0) {
         const signChildrenContainer = document.createElement('div');
         signChildrenContainer.className = 'signchildren-container';
-        
+
         node.signchildren.forEach(signChild => {
             const signItem = createSignItem(signChild);
             if (signItem.children.length > 0) {
@@ -272,14 +272,14 @@ function renderTree(node, parentElement, level = 0) {
     // 只有當有可見內容時才添加展開/收合功能
     if (hasVisibleChildren) {
         treeItem.appendChild(nodeContent);
-        
+
         // 點擊事件處理
         treeContent.addEventListener('click', () => {
             nodeContent.classList.toggle('hidden');
-            
+
             // 更新圖示
-            toggleBtn.innerHTML = nodeContent.classList.contains('hidden') 
-                ? '<i class="fas fa-plus"></i>' 
+            toggleBtn.innerHTML = nodeContent.classList.contains('hidden')
+                ? '<i class="fas fa-plus"></i>'
                 : '<i class="fas fa-minus"></i>';
         });
     } else {
@@ -296,22 +296,22 @@ container.className = 'tree-container';
 document.body.appendChild(container);
 
 // 添加按鈕點擊事件處理
-document.getElementById('addButton').addEventListener('click', async function() {
+document.getElementById('addButton').addEventListener('click', async function () {
     try {
         async function createDateFolders() {
             try {
                 const now = new Date();
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
-                
+
                 // 只顯示訊息，因為在靜態網頁中無法創建實際的資料夾
                 alert(`在實際環境中會創建以下資料夾：\n${year}/${year}-${month}`);
-                
+
                 // 如果需要，您可以將資料夾資訊儲存在 localStorage 中
                 const folders = JSON.parse(localStorage.getItem('createdFolders') || '[]');
                 folders.push(`${year}/${year}-${month}`);
                 localStorage.setItem('createdFolders', JSON.stringify(folders));
-                
+
             } catch (error) {
                 console.error('Error:', error);
                 alert('操作失敗：' + error.message);
