@@ -57,8 +57,9 @@
 - 可以新增表單驗證
 - 可以最佳化行動裝置體驗
 
-## 📚Resource
+## 8. Resource
 
 - [Markdown](https://markdown.tw/)
 - [Mermaid](https://mermaid.js.org/)
 - [Shields.io](https://shields.io/)
+- [Simple-icons](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)
