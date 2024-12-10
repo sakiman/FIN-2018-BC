@@ -56,3 +56,9 @@
 - 可以增加使用者認證機制
 - 可以新增表單驗證
 - 可以最佳化行動裝置體驗
+
+## 📚Resource
+
+- [Markdown](https://markdown.tw/)
+- [Mermaid](https://mermaid.js.org/)
+- [Shields.io](https://shields.io/)
