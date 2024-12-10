@@ -315,24 +315,28 @@ input.date-input:focus {
 }
 
 /* 基本層級縮排 */
+.level-0 {
+    margin-left: 0;
+}
+
 .level-1 {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .level-2 {
-    margin-left: 60px;
+    margin-left: 40px;
 }
 
 .level-3 {
-    margin-left: 90px;
+    margin-left: 60px;
 }
 
 .level-4 {
-    margin-left: 120px;
+    margin-left: 75px;
 }
 
 .level-5 {
-    margin-left: 150px;
+    margin-left: 90px;
 }
 
 /* 調整簽核容器的位置，避免重複縮排 */
@@ -363,11 +367,11 @@ input.date-input:focus {
 }
 
 .sign-level-4 {
-    margin-left: 80px;
+    margin-left: 75px;
 }
 
 .sign-level-5 {
-    margin-left: 100px;
+    margin-left: 90px;
 }
 
 .sign-field select:disabled {
@@ -521,4 +525,52 @@ input.date-input:focus {
 
 .approval-button.return.show {
     display: inline-flex;
+}
+
+/* 深色主題 */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-theme .container {
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .tree-content:hover {
+    background-color: #3d3d3d;
+}
+
+body.dark-theme .tree-title {
+    color: #ffffff;
+}
+
+body.dark-theme .level-0 > .tree-content > .tree-title {
+    color: #ffffff;
+}
+
+body.dark-theme .level-1 > .tree-content > .tree-title {
+    color: #e0e0e0;
+}
+
+body.dark-theme .level-2 > .tree-content > .tree-title {
+    color: #cccccc;
+}
+
+body.dark-theme .sign-item {
+    background-color: #3d3d3d;
+    border-left-color: #007bff;
+}
+
+body.dark-theme .toggle-btn:hover {
+    background-color: #4d4d4d;
+}
+
+#themeButton.dark {
+    background-color: #6c757d;
+}
+
+#themeButton.dark:hover {
+    background-color: #5a6268;
 }

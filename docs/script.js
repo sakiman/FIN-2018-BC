@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 添加展開/收合按鈕的事件監聽器
         document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
         
+        // 添加主題切換按鈕的事件監聽器
+        document.getElementById('themeButton').addEventListener('click', toggleTheme);
+        
         // 預設展開到 level 2
         expandToLevel(2);
     } catch (error) {
@@ -421,6 +424,26 @@ function expandToLevel(level) {
             }
         }
     });
+}
+
+function toggleTheme() {
+    const themeButton = document.getElementById('themeButton');
+    const body = document.body;
+    const isDark = body.classList.contains('dark-theme');
+
+    if (isDark) {
+        // 切換到淺色主題
+        body.classList.remove('dark-theme');
+        themeButton.classList.remove('dark', 'btn-secondary');
+        themeButton.classList.add('btn-warning');
+        themeButton.innerHTML = '<i class="fas fa-sun"></i> Sunshine';
+    } else {
+        // 切換到深色主題
+        body.classList.add('dark-theme');
+        themeButton.classList.remove('btn-warning');
+        themeButton.classList.add('dark', 'btn-secondary');
+        themeButton.innerHTML = '<i class="fas fa-moon"></i> Moon';
+    }
 }
 
 // 初始化容器
