@@ -165,6 +165,39 @@ function createSignItem(signChild, parentSelect = null) {
     return signItem;
 }
 
+function createApprovalButtons() {
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'approval-buttons';
+
+    // 初審主管審核按鈕
+    const managerButton = document.createElement('button');
+    managerButton.className = 'approval-button manager';
+    managerButton.innerHTML = '<i class="fas fa-check"></i> 初審主管審核';
+    managerButton.onclick = function(e) {
+        e.stopPropagation();
+        if (!this.classList.contains('approved')) {
+            this.classList.add('approved');
+            this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
+        }
+    };
+
+    // BU Head 審核按鈕
+    const headButton = document.createElement('button');
+    headButton.className = 'approval-button head';
+    headButton.innerHTML = '<i class="fas fa-check"></i> BU Head 審核';
+    headButton.onclick = function(e) {
+        e.stopPropagation();
+        if (!this.classList.contains('approved')) {
+            this.classList.add('approved');
+            this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
+        }
+    };
+
+    buttonContainer.appendChild(managerButton);
+    buttonContainer.appendChild(headButton);
+    return buttonContainer;
+}
+
 function renderTree(node, parentElement, level = 0) {
     const treeItem = document.createElement('div');
     treeItem.className = `tree-item level-${level}`;
@@ -185,6 +218,12 @@ function renderTree(node, parentElement, level = 0) {
     const title = document.createElement('span');
     title.className = 'tree-title';
     title.textContent = node.title;
+
+    // 如果層級是 2，添加審核按鈕
+    if (level === 2) {
+        const approvalButtons = createApprovalButtons();
+        title.appendChild(approvalButtons);
+    }
 
     // 如果有 flexstrings，添加輸入框
     if (node.showflexstrings === "Y") {
@@ -298,26 +337,22 @@ function renderTree(node, parentElement, level = 0) {
 function toggleAllNodes() {
     const expandAllButton = document.getElementById('expandAllButton');
     const isExpanding = expandAllButton.innerHTML.includes('Expand');
-    const allToggleButtons = document.querySelectorAll('.toggle-btn');
     
-    allToggleButtons.forEach(btn => {
-        const icon = btn.querySelector('i');
-        const childrenContainer = btn.closest('.tree-item').querySelector('.node-content');
-        if (childrenContainer && icon) {
-            if (isExpanding) {
+    if (isExpanding) {
+        // 展開所有項目
+        const allToggleButtons = document.querySelectorAll('.toggle-btn');
+        allToggleButtons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            const childrenContainer = btn.closest('.tree-item').querySelector('.node-content');
+            if (childrenContainer && icon) {
                 icon.className = 'fas fa-minus';
                 childrenContainer.classList.remove('hidden');
-            } else {
-                icon.className = 'fas fa-plus';
-                childrenContainer.classList.add('hidden');
             }
-        }
-    });
-
-    // 更新按鈕文字和圖標
-    if (isExpanding) {
+        });
         expandAllButton.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Collapse All';
     } else {
+        // 回到預設狀態（展開到 level 2）
+        expandToLevel(2);
         expandAllButton.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Expand All';
     }
 }
