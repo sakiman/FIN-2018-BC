@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 添加展開/收合按鈕的事件監聽器
         document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
+        
+        // 預設展開到 level 2
+        expandToLevel(2);
     } catch (error) {
         console.error('Error loading JSON:', error);
     }
@@ -327,6 +330,26 @@ function expandAllNodes() {
         if (childrenContainer && icon) {
             icon.className = 'fas fa-minus';
             childrenContainer.classList.remove('hidden');
+        }
+    });
+}
+
+function expandToLevel(level) {
+    const allTreeItems = document.querySelectorAll('.tree-item');
+    allTreeItems.forEach(item => {
+        const currentLevel = parseInt(item.className.match(/level-(\d+)/)[1]);
+        const toggleBtn = item.querySelector('.toggle-btn');
+        const nodeContent = item.querySelector('.node-content');
+        
+        if (toggleBtn && nodeContent) {
+            const icon = toggleBtn.querySelector('i');
+            if (currentLevel < level) {
+                icon.className = 'fas fa-minus';
+                nodeContent.classList.remove('hidden');
+            } else {
+                icon.className = 'fas fa-plus';
+                nodeContent.classList.add('hidden');
+            }
         }
     });
 }
