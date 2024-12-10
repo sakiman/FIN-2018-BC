@@ -15,7 +15,7 @@
       "signchildren": [
         {
           "show": "N",
-          "signlevel": "2",
+          "signlevel": "1-2",
           "Y/N/NA": null,
           "signer": null,
           "signdate": null,
@@ -42,7 +42,7 @@
           "signchildren": [
             {
               "show": "N",
-              "signlevel": "2",
+              "signlevel": "1-2",
               "Y/N/NA": null,
               "signer": null,
               "signdate": null,
@@ -69,7 +69,7 @@
               "signchildren": [
                 {
                   "show": "N",
-                  "signlevel": "2",
+                  "signlevel": "1-2",
                   "Y/N/NA": null,
                   "signer": null,
                   "signdate": null,
@@ -96,7 +96,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -124,7 +124,7 @@
                   "signchildren": [
                     {
                       "show": "N",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -151,7 +151,7 @@
                       "signchildren": [
                         {
                           "show": "N",
-                          "signlevel": "2",
+                          "signlevel": "1-2",
                           "Y/N/NA": null,
                           "signer": null,
                           "signdate": null,
@@ -178,7 +178,7 @@
                           "signchildren": [
                             {
                               "show": "Y",
-                              "signlevel": "2",
+                              "signlevel": "1-2",
                               "Y/N/NA": null,
                               "signer": null,
                               "signdate": null,
@@ -208,7 +208,7 @@
                       "signchildren": [
                         {
                           "show": "N",
-                          "signlevel": "2",
+                          "signlevel": "1-2",
                           "Y/N/NA": null,
                           "signer": null,
                           "signdate": null,
@@ -235,7 +235,7 @@
                           "signchildren": [
                             {
                               "show": "Y",
-                              "signlevel": "2",
+                              "signlevel": "1-2",
                               "Y/N/NA": null,
                               "signer": null,
                               "signdate": null,
@@ -263,7 +263,7 @@
                           "signchildren": [
                             {
                               "show": "Y",
-                              "signlevel": "2",
+                              "signlevel": "1-2",
                               "Y/N/NA": null,
                               "signer": null,
                               "signdate": null,
@@ -293,7 +293,7 @@
                       "signchildren": [
                         {
                           "show": "Y",
-                          "signlevel": "2",
+                          "signlevel": "1-2",
                           "Y/N/NA": null,
                           "signer": null,
                           "signdate": null,
@@ -325,7 +325,7 @@
               "signchildren": [
                 {
                   "show": "Y",
-                  "signlevel": "2",
+                  "signlevel": "1-2",
                   "Y/N/NA": null,
                   "signer": null,
                   "signdate": null,
@@ -355,7 +355,7 @@
           "signchildren": [
             {
               "show": "N",
-              "signlevel": "2",
+              "signlevel": "1-2",
               "Y/N/NA": null,
               "signer": null,
               "signdate": null,
@@ -382,7 +382,7 @@
               "signchildren": [
                 {
                   "show": "N",
-                  "signlevel": "2",
+                  "signlevel": "1-2",
                   "Y/N/NA": null,
                   "signer": null,
                   "signdate": null,
@@ -409,7 +409,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -437,7 +437,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -465,7 +465,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -493,7 +493,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -523,7 +523,7 @@
               "signchildren": [
                 {
                   "show": "N",
-                  "signlevel": "2",
+                  "signlevel": "1-2",
                   "Y/N/NA": null,
                   "signer": null,
                   "signdate": null,
@@ -550,7 +550,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -578,7 +578,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,
@@ -606,7 +606,7 @@
                   "signchildren": [
                     {
                       "show": "Y",
-                      "signlevel": "2",
+                      "signlevel": "1-2",
                       "Y/N/NA": null,
                       "signer": null,
                       "signdate": null,

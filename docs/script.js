@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
         const treeView = document.getElementById('treeView');
         renderTree(data, treeView);
+
+        // 添加展開/收合按鈕的事件監聽器
+        document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
     } catch (error) {
         console.error('Error loading JSON:', error);
     }
@@ -42,7 +45,7 @@ function createSignItem(signChild, parentSelect = null) {
         const selectLabel = document.createElement('label');
         // 根據 signlevel 設定不同的標籤文字
         selectLabel.textContent = signChild.signlevel === "1" ? "初審:" :
-            signChild.signlevel === "2" ? "複審:" :
+            signChild.signlevel === "1-2" ? "複審:" :
                 "Y/N/NA:";
 
         const select = document.createElement('select');
@@ -287,6 +290,45 @@ function renderTree(node, parentElement, level = 0) {
     }
 
     parentElement.appendChild(treeItem);
+}
+
+function toggleAllNodes() {
+    const expandAllButton = document.getElementById('expandAllButton');
+    const isExpanding = expandAllButton.innerHTML.includes('Expand');
+    const allToggleButtons = document.querySelectorAll('.toggle-btn');
+    
+    allToggleButtons.forEach(btn => {
+        const icon = btn.querySelector('i');
+        const childrenContainer = btn.closest('.tree-item').querySelector('.node-content');
+        if (childrenContainer && icon) {
+            if (isExpanding) {
+                icon.className = 'fas fa-minus';
+                childrenContainer.classList.remove('hidden');
+            } else {
+                icon.className = 'fas fa-plus';
+                childrenContainer.classList.add('hidden');
+            }
+        }
+    });
+
+    // 更新按鈕文字和圖標
+    if (isExpanding) {
+        expandAllButton.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Collapse All';
+    } else {
+        expandAllButton.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Expand All';
+    }
+}
+
+function expandAllNodes() {
+    const allToggleButtons = document.querySelectorAll('.toggle-btn');
+    allToggleButtons.forEach(btn => {
+        const icon = btn.querySelector('i');
+        const childrenContainer = btn.closest('.tree-item').querySelector('.node-content');
+        if (childrenContainer && icon) {
+            icon.className = 'fas fa-minus';
+            childrenContainer.classList.remove('hidden');
+        }
+    });
 }
 
 // 初始化容器
