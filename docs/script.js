@@ -434,15 +434,11 @@ function toggleTheme() {
     if (isDark) {
         // 切換到淺色主題
         body.classList.remove('dark-theme');
-        themeButton.classList.remove('dark', 'btn-secondary');
-        themeButton.classList.add('btn-warning');
-        themeButton.innerHTML = '<i class="fas fa-sun"></i> Sunshine';
+        themeButton.innerHTML = '<i class="fas fa-sun"></i> <span>Sunshine</span>';
     } else {
         // 切換到深色主題
         body.classList.add('dark-theme');
-        themeButton.classList.remove('btn-warning');
-        themeButton.classList.add('dark', 'btn-secondary');
-        themeButton.innerHTML = '<i class="fas fa-moon"></i> Moon';
+        themeButton.innerHTML = '<i class="fas fa-moon"></i> <span>Moon</span>';
     }
 }
 
