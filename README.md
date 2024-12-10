@@ -62,4 +62,4 @@
 - [Markdown](https://markdown.tw/)
 - [Mermaid](https://mermaid.js.org/)
 - [Shields.io](https://shields.io/)
-- [Simple-icons](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)
+- [Simple-icons badge slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)
