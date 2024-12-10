@@ -1,6 +1,6 @@
 # FIN 政府標單或法人採購標案用印前檢核作業
 
-![](https://img.shields.io/badge/Project-FIN--2018--BC-orange) ![](https://img.shields.io/badge/CSS-2891C8?logo=css3) ![](https://img.shields.io/badge/HTML-555?logo=htmlacademy) ![](https://img.shields.io/badge/JavaScript-555?logo=javascript) ![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap) ![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome) ![](https://img.shields.io/badge/JSON-555?logo=json)
+![](https://img.shields.io/badge/Project-FIN--2018--BC-orange) ![](https://img.shields.io/badge/CSS-2891C8?logo=css3) ![](https://img.shields.io/badge/HTML-555?logo=htmlacademy) ![](https://img.shields.io/badge/JavaScript-555?logo=javascript) ![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap) ![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome) ![](https://img.shields.io/badge/JSON-555?logo=json) ![](https://img.shields.io/badge/Mermaid-555?logo=mermaid) ![](https://img.shields.io/badge/Shields.io-555?logo=shieldsdotio) ![](https://img.shields.io/badge/Markdown-555?logo=markdown)
 
 ## 1. 專案結構和功能
 - 這是一個用於政府標單或法人採購標案的印鑑用印前申請檢核表的網頁應用程式
