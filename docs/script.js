@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 添加展開/收合按鈕的事件監聽器
         document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
-        
+
         // 添加主題切換按鈕的事件監聽器
         document.getElementById('themeButton').addEventListener('click', toggleTheme);
-        
+
         // 預設展開到 level 2
         expandToLevel(2);
     } catch (error) {
@@ -181,7 +181,7 @@ function createApprovalButtons() {
     const managerReturnButton = document.createElement('button');
     managerReturnButton.className = 'approval-button return';
     managerReturnButton.innerHTML = '<i class="fas fa-undo"></i> 初審退回';
-    managerReturnButton.onclick = function(e) {
+    managerReturnButton.onclick = function (e) {
         e.stopPropagation();
         // 還原初審主管審核按鈕狀態
         managerButton.classList.remove('approved');
@@ -190,7 +190,7 @@ function createApprovalButtons() {
         this.classList.remove('show');
     };
 
-    managerButton.onclick = function(e) {
+    managerButton.onclick = function (e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
@@ -209,7 +209,7 @@ function createApprovalButtons() {
     const headReturnButton = document.createElement('button');
     headReturnButton.className = 'approval-button return';
     headReturnButton.innerHTML = '<i class="fas fa-undo"></i> BU Head 退回';
-    headReturnButton.onclick = function(e) {
+    headReturnButton.onclick = function (e) {
         e.stopPropagation();
         // 還原 BU Head 審核按鈕狀態
         headButton.classList.remove('approved');
@@ -218,7 +218,7 @@ function createApprovalButtons() {
         this.classList.remove('show');
     };
 
-    headButton.onclick = function(e) {
+    headButton.onclick = function (e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
@@ -374,7 +374,7 @@ function renderTree(node, parentElement, level = 0) {
 function toggleAllNodes() {
     const expandAllButton = document.getElementById('expandAllButton');
     const isExpanding = expandAllButton.innerHTML.includes('Expand');
-    
+
     if (isExpanding) {
         // 展開所有項目
         const allToggleButtons = document.querySelectorAll('.toggle-btn');
@@ -412,7 +412,7 @@ function expandToLevel(level) {
         const currentLevel = parseInt(item.className.match(/level-(\d+)/)[1]);
         const toggleBtn = item.querySelector('.toggle-btn');
         const nodeContent = item.querySelector('.node-content');
-        
+
         if (toggleBtn && nodeContent) {
             const icon = toggleBtn.querySelector('i');
             if (currentLevel < level) {
