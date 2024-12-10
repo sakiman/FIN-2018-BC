@@ -173,11 +173,27 @@ function createApprovalButtons() {
     const managerButton = document.createElement('button');
     managerButton.className = 'approval-button manager';
     managerButton.innerHTML = '<i class="fas fa-check"></i> 初審主管審核';
+
+    // 初審退回按鈕
+    const managerReturnButton = document.createElement('button');
+    managerReturnButton.className = 'approval-button return';
+    managerReturnButton.innerHTML = '<i class="fas fa-undo"></i> 初審退回';
+    managerReturnButton.onclick = function(e) {
+        e.stopPropagation();
+        // 還原初審主管審核按鈕狀態
+        managerButton.classList.remove('approved');
+        managerButton.innerHTML = '<i class="fas fa-check"></i> 初審主管審核';
+        // 隱藏退回按鈕
+        this.classList.remove('show');
+    };
+
     managerButton.onclick = function(e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
+            // 顯示退回按鈕
+            managerReturnButton.classList.add('show');
         }
     };
 
@@ -185,16 +201,34 @@ function createApprovalButtons() {
     const headButton = document.createElement('button');
     headButton.className = 'approval-button head';
     headButton.innerHTML = '<i class="fas fa-check"></i> BU Head 審核';
+
+    // BU Head 退回按鈕
+    const headReturnButton = document.createElement('button');
+    headReturnButton.className = 'approval-button return';
+    headReturnButton.innerHTML = '<i class="fas fa-undo"></i> BU Head 退回';
+    headReturnButton.onclick = function(e) {
+        e.stopPropagation();
+        // 還原 BU Head 審核按鈕狀態
+        headButton.classList.remove('approved');
+        headButton.innerHTML = '<i class="fas fa-check"></i> BU Head 審核';
+        // 隱藏退回按鈕
+        this.classList.remove('show');
+    };
+
     headButton.onclick = function(e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
+            // 顯示退回按鈕
+            headReturnButton.classList.add('show');
         }
     };
 
     buttonContainer.appendChild(managerButton);
+    buttonContainer.appendChild(managerReturnButton);
     buttonContainer.appendChild(headButton);
+    buttonContainer.appendChild(headReturnButton);
     return buttonContainer;
 }
 
