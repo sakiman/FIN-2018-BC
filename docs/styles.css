@@ -3,16 +3,19 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #f5f1eb;  /* 預設淺色模式 */
+    transition: background-color 0.3s ease;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #faf7f2;  
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4a90e2;  
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);  
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 h1 {
@@ -43,13 +46,11 @@ h1 {
     display: block;
     min-height: 24px;
     line-height: 1.5;
-    padding: 2px 0;
-    cursor: pointer;
     padding: 2px 4px;
     border-radius: 4px;
     transition: background-color 0.2s;
     word-break: break-word;
-    overflow: visible;
+    cursor: pointer;
 }
 
 .tree-content:hover {
@@ -556,15 +557,21 @@ body:not(.dark-theme) #themeButton:hover {
     border-color: #d39e00;
 }
 
-/* 深色主題 */
+/* 淺色模式 */
+body:not(.dark-theme) {
+    background-color: #f5f1eb;
+}
+
+/* 深色模式 */
 body.dark-theme {
     background-color: #1a1a1a;
-    color: #ffffff;
+    color: #e0e0e0;
 }
 
 body.dark-theme .container {
     background-color: #2d2d2d;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-color: #366eaa;  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-theme .tree-content:hover {
