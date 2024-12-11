@@ -256,10 +256,10 @@ function renderTree(node, parentElement, level = 0) {
     title.className = 'tree-title';
     title.textContent = node.title;
 
-    // 如果層級是 2，添加審核按鈕
-    if (level === 2) {
+    // 如果是根節點 (level 0)，添加審核按鈕
+    if (level === 0) {
         const approvalButtons = createApprovalButtons();
-        title.appendChild(approvalButtons);
+        titleContainer.appendChild(approvalButtons);
     }
 
     // 如果有 flexstrings，添加輸入框

@@ -92,6 +92,8 @@ h1 {
     margin: 0;
     padding: 0;
     color: #333;
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 .tree-title.multiline {
@@ -217,7 +219,8 @@ h1 {
 .title-container {
     display: flex;
     align-items: center;
-    gap: 4px;
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 input.flex-input {
@@ -470,61 +473,63 @@ input.date-input:focus {
 }
 
 .approval-buttons {
-    display: inline-flex;
-    gap: 8px;
-    margin-left: 15px;
-    vertical-align: middle;
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
 }
 
 .approval-button {
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 4px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    color: white;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
 }
 
 .approval-button.manager {
-    background-color: #28a745;
-}
-
-.approval-button.manager:hover {
-    background-color: #218838;
+    background-color: #4CAF50;
+    color: white;
 }
 
 .approval-button.head {
     background-color: #17a2b8;
-}
-
-.approval-button.head:hover {
-    background-color: #138496;
-}
-
-.approval-button i {
-    font-size: 10px;
-}
-
-.approval-button.approved {
-    opacity: 0.6;
-    cursor: not-allowed;
+    color: white;
 }
 
 .approval-button.return {
-    background-color: #dc3545;
-    margin-left: 8px;
+    background-color: #f44336;
+    color: white;
     display: none;
-}
-
-.approval-button.return:hover {
-    background-color: #c82333;
 }
 
 .approval-button.return.show {
     display: inline-flex;
+}
+
+/* 分別設置不同按鈕的已審核狀態 */
+.approval-button.manager.approved {
+    background-color: #45a049;
+}
+
+.approval-button.head.approved {
+    background-color: #17a2b8;
+    opacity: 0.8;
+}
+
+.approval-button i {
+    font-size: 0.9em;
+}
+
+.approval-button.manager.approved {
+    background-color: #45a049;
+}
+
+.approval-button.head.approved {
+    opacity: 0.8;
 }
 
 /* 主題切換按鈕樣式 */
@@ -589,6 +594,31 @@ body.dark-theme .sign-item {
 
 body.dark-theme .toggle-btn:hover {
     background-color: #4d4d4d;
+}
+
+body.dark-theme .approval-button.manager {
+    background-color: #388E3C;
+}
+
+body.dark-theme .approval-button.head {
+    background-color: #17a2b8;
+}
+
+body.dark-theme .approval-button.return {
+    background-color: #d32f2f;
+}
+
+body.dark-theme .approval-button.approved {
+    background-color: #2E7D32;
+}
+
+body.dark-theme .approval-button.manager.approved {
+    background-color: #2E7D32;
+}
+
+body.dark-theme .approval-button.head.approved {
+    background-color: #17a2b8;
+    opacity: 0.8;
 }
 
 #themeButton.dark {
