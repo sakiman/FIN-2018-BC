@@ -1,20 +1,13 @@
 # FIN 政府標單或法人採購標案用印前檢核作業
 
-![](https://img.shields.io/badge/Project-FIN--2018--BC-orange)
-![](https://img.shields.io/badge/CSS-2891C8?logo=css3)
-![](https://img.shields.io/badge/HTML-555?logo=htmlacademy)
-![](https://img.shields.io/badge/JavaScript-555?logo=javascript)
-![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap)
-![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome)
-![](https://img.shields.io/badge/JSON-555?logo=json)
-![](https://img.shields.io/badge/Mermaid-555?logo=mermaid)
-![](https://img.shields.io/badge/Shields.io-555?logo=shieldsdotio)
-![](https://img.shields.io/badge/Markdown-555?logo=markdown)
+![](https://img.shields.io/badge/Project-FIN--2018--BC-orange) ![](https://img.shields.io/badge/CSS-2891C8?logo=css3) ![](https://img.shields.io/badge/HTML-555?logo=htmlacademy) ![](https://img.shields.io/badge/JavaScript-555?logo=javascript) ![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap) ![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome) ![](https://img.shields.io/badge/JSON-555?logo=json)
+
+Badge 徽章效果 [Simple Icons slugs](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)
 
 ## 1. 專案結構和功能
 - 這是一個用於政府標單或法人採購標案的印鑑用印前申請檢核表的網頁應用程式
 - 使用純前端技術架構（HTML + CSS + JavaScript）
-- 資料儲存在 [FIN-208-BC.json](https://github.com/sakiman/FIN-2018-BC/blob/main/docs/FIN-208-BC.json) 檔案中
+- 資料儲存在 [FIN-208-BC.json](./docs/FIN-208-BC.json)
 
 ## 2. index.html 分析
 - 基本的 HTML5 結構
@@ -65,11 +58,3 @@
 - 可以增加使用者認證機制
 - 可以新增表單驗證
 - 可以最佳化行動裝置體驗
-
-## 8. Resource
-
-- [Markdown](https://markdown.tw/)
-- [Mermaid](https://mermaid.js.org/)
-- [Shields.io](https://shields.io/)
-- [Simple-icons badge slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)
-- [JSON Edior Online](https://jsoneditoronline.org/)
