@@ -3,18 +3,18 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f5f1eb;  /* 預設淺色模式 */
+    background-color: #f5f1eb;
     transition: background-color 0.3s ease;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #faf7f2;  
+    background-color: #faf7f2;
     padding: 20px;
     border-radius: 8px;
-    border: 2px solid #4a90e2;  
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);  
+    border: 2px solid #4a90e2;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -46,11 +46,13 @@ h1 {
     display: block;
     min-height: 24px;
     line-height: 1.5;
+    padding: 2px 0;
+    cursor: pointer;
     padding: 2px 4px;
     border-radius: 4px;
     transition: background-color 0.2s;
     word-break: break-word;
-    cursor: pointer;
+    overflow: visible;
 }
 
 .tree-content:hover {
@@ -93,8 +95,6 @@ h1 {
     margin: 0;
     padding: 0;
     color: #333;
-    flex-grow: 1;
-    margin-right: 10px;
 }
 
 .tree-title.multiline {
@@ -220,8 +220,7 @@ h1 {
 .title-container {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    margin-right: 10px;
+    gap: 4px;
 }
 
 input.flex-input {
@@ -474,63 +473,61 @@ input.date-input:focus {
 }
 
 .approval-buttons {
-    display: flex;
-    gap: 10px;
-    margin-left: auto;
+    display: inline-flex;
+    gap: 8px;
+    margin-left: 15px;
+    vertical-align: middle;
 }
 
 .approval-button {
-    padding: 4px 12px;
+    padding: 4px 8px;
+    font-size: 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
+    color: white;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .approval-button.manager {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #28a745;
+}
+
+.approval-button.manager:hover {
+    background-color: #218838;
 }
 
 .approval-button.head {
     background-color: #17a2b8;
-    color: white;
+}
+
+.approval-button.head:hover {
+    background-color: #138496;
+}
+
+.approval-button i {
+    font-size: 10px;
+}
+
+.approval-button.approved {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .approval-button.return {
-    background-color: #f44336;
-    color: white;
+    background-color: #dc3545;
+    margin-left: 8px;
     display: none;
+}
+
+.approval-button.return:hover {
+    background-color: #c82333;
 }
 
 .approval-button.return.show {
     display: inline-flex;
-}
-
-/* 分別設置不同按鈕的已審核狀態 */
-.approval-button.manager.approved {
-    background-color: #45a049;
-}
-
-.approval-button.head.approved {
-    background-color: #17a2b8;
-    opacity: 0.8;
-}
-
-.approval-button i {
-    font-size: 0.9em;
-}
-
-.approval-button.manager.approved {
-    background-color: #45a049;
-}
-
-.approval-button.head.approved {
-    opacity: 0.8;
 }
 
 /* 主題切換按鈕樣式 */
@@ -562,16 +559,51 @@ body:not(.dark-theme) {
     background-color: #f5f1eb;
 }
 
-/* 深色模式 */
+/* Sunshine 主題 */
+body.sunshine-theme {
+    background-color: #f5f1eb;
+}
+
+body.sunshine-theme .container {
+    background-color: #faf7f2;
+    border: 2px solid #4a90e2;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+body.sunshine-theme .tree-content:hover {
+    background-color: #f0f0f0;
+}
+
+body.sunshine-theme .toggle-btn:hover {
+    background-color: #e0e0e0;
+}
+
+body.sunshine-theme .sign-item {
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+}
+
+/* 主題按鈕樣式 */
+#themeButton.sunshine {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
+}
+
+#themeButton.sunshine:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+/* 深色主題 */
 body.dark-theme {
     background-color: #1a1a1a;
-    color: #e0e0e0;
+    color: #ffffff;
 }
 
 body.dark-theme .container {
     background-color: #2d2d2d;
-    border-color: #366eaa;  
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-theme .tree-content:hover {
@@ -601,31 +633,6 @@ body.dark-theme .sign-item {
 
 body.dark-theme .toggle-btn:hover {
     background-color: #4d4d4d;
-}
-
-body.dark-theme .approval-button.manager {
-    background-color: #388E3C;
-}
-
-body.dark-theme .approval-button.head {
-    background-color: #17a2b8;
-}
-
-body.dark-theme .approval-button.return {
-    background-color: #d32f2f;
-}
-
-body.dark-theme .approval-button.approved {
-    background-color: #2E7D32;
-}
-
-body.dark-theme .approval-button.manager.approved {
-    background-color: #2E7D32;
-}
-
-body.dark-theme .approval-button.head.approved {
-    background-color: #17a2b8;
-    opacity: 0.8;
 }
 
 #themeButton.dark {
