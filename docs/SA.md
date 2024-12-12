@@ -1,6 +1,12 @@
 # 政府標單或法人採購標案 - 印鑑用印前申請之檢核表
 
-![](https://img.shields.io/badge/Project-FIN--2018--BC-orange) ![](https://img.shields.io/badge/CSS-2891C8?logo=css3) ![](https://img.shields.io/badge/HTML-555?logo=htmlacademy) ![](https://img.shields.io/badge/JavaScript-555?logo=javascript) ![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap) ![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome) ![](https://img.shields.io/badge/JSON-555?logo=json) ![](https://img.shields.io/badge/Flatpickr-777)
+![](https://img.shields.io/badge/Project-FIN--2018--BC-orange)
+![](https://img.shields.io/badge/CSS-2891C8?logo=css3)
+![](https://img.shields.io/badge/HTML-555?logo=htmlacademy)
+![](https://img.shields.io/badge/JavaScript-555?logo=javascript)
+![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap)
+![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome)
+![](https://img.shields.io/badge/JSON-555?logo=json) ![](https://img.shields.io/badge/Flatpickr-777)
 
 ## 系統架構文件
 
