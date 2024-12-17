@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政府標單或法人採購標案 - 印鑑用印前申請之檢核表</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -36,6 +36,13 @@
                 <i class="fas fa-book"></i>
                 <span>SA Document</span>
             </a>
+        </div>
+        <div style="display: flex; gap: 10px; max-width: 400px; margin-bottom: 1rem;">
+            <select id="currencySelect" class="custom-select" style="width: 100px;">
+                <option value="USD">USD</option>
+                <option value="TWD">TWD</option>
+            </select>
+            <input type="text" id="amountInput" class="form-control" placeholder="Enter amount">
         </div>
         <div id="treeView" class="tree-view"></div>
     </div>

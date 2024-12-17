@@ -1,3 +1,32 @@
+// 格式化金額的函數
+function formatAmount(value) {
+    if (!value) return '';
+    
+    try {
+        // 移除所有非數字和小數點的字符
+        value = value.replace(/[^\d.]/g, '');
+        
+        // 分割整數和小數部分
+        let [intPart, decPart] = value.split('.');
+        
+        // 處理整數部分（添加千分位）
+        if (intPart.length > 3) {
+            intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        
+        // 如果有小數部分，限制為兩位
+        if (decPart) {
+            decPart = decPart.slice(0, 2);
+            return `${intPart}.${decPart}`;
+        }
+        
+        return intPart;
+    } catch (error) {
+        console.error('Error formatting amount:', error);
+        return value; // 發生錯誤時返回原始值
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('./FIN-208-BC.json');
@@ -10,6 +39,51 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 添加主題切換按鈕的事件監聽器
         document.getElementById('themeButton').addEventListener('click', toggleTheme);
+
+        // 添加金額輸入驗證和格式化
+        const amountInput = document.getElementById('amountInput');
+        
+        // 只允許數字和小數點
+        amountInput.addEventListener('keypress', (e) => {
+            // 只允許數字、小數點和控制鍵
+            if (!/[\d.]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                e.preventDefault();
+            }
+            
+            // 限制只能有一個小數點
+            if (e.key === '.' && e.target.value.includes('.')) {
+                e.preventDefault();
+            }
+        });
+
+        // 失去焦點時格式化
+        amountInput.addEventListener('blur', (e) => {
+            try {
+                const value = e.target.value.trim();
+                if (!value) return;
+                
+                const formattedValue = formatAmount(value);
+                if (formattedValue) {
+                    e.target.value = formattedValue;
+                }
+            } catch (err) {
+                console.error('Format error:', err);
+                // 發生錯誤時保留原始值
+                e.target.value = e.target.value.trim();
+            }
+        });
+
+        // 獲得焦點時移除格式化
+        amountInput.addEventListener('focus', (e) => {
+            try {
+                const value = e.target.value.replace(/,/g, '');
+                e.target.value = value;
+            } catch (err) {
+                console.error('Unformat error:', err);
+                // 發生錯誤時保留原始值
+                e.target.value = e.target.value.trim();
+            }
+        });
 
         // 預設展開到 level 2
         expandToLevel(2);
@@ -55,6 +129,8 @@ function createSignItem(signChild, parentSelect = null) {
                 "Y/N/NA:";
 
         const select = document.createElement('select');
+        select.className = 'custom-select';
+        select.style.width = '80px';  // 設置固定寬度
         // 如果有父層級且父層級為空白，則禁用此下拉選單
         if (parentSelect && parentSelect.value === '') {
             select.disabled = true;
