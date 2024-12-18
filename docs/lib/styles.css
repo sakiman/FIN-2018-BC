@@ -518,6 +518,16 @@ input.date-input:focus {
     background-color: #c82333;
 }
 
+.approval-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+.dark-theme .approval-button.disabled {
+    background-color: #444;
+}
+
 /* 輸入區域容器 */
 .input-container {
     display: flex;

@@ -355,6 +355,11 @@ function createApprovalButtons() {
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
+            
+            // 禁用初審退回按鈕
+            const returnButton = this.parentElement.querySelector('[data-type="firstReview"]');
+            returnButton.disabled = true;
+            returnButton.classList.add('disabled');
         }
     };
 
@@ -378,6 +383,11 @@ function createApprovalButtons() {
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
+            
+            // 禁用 BU Head 退回按鈕
+            const returnButton = this.parentElement.querySelector('[data-type="buHead"]');
+            returnButton.disabled = true;
+            returnButton.classList.add('disabled');
         }
     };
 
