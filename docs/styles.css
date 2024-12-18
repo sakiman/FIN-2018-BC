@@ -643,6 +643,54 @@ body.dark-theme .toggle-btn:hover {
     background-color: #5a6268;
 }
 
+/* 金額輸入區域樣式 */
+.currency-input-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.currency-input-group .custom-select {
+    width: 80px;
+}
+
+.currency-form-control {
+    width: 140px;
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.currency-form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 深色模式下的輸入框樣式 */
+.dark-theme .currency-form-control {
+    background-color: #333;
+    border-color: #666;
+    color: #fff;
+}
+
+.dark-theme .currency-form-control:focus {
+    background-color: #333;
+    border-color: #80bdff;
+    color: #fff;
+}
+
 /* 自定義選擇框樣式 */
 .custom-select {
     appearance: none;

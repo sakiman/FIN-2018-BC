@@ -30,19 +30,19 @@
                 All</button>
             <button id="themeButton" class="btn btn-secondary mb-3">
                 <i class="fas fa-moon"></i>
-                <span>Moon</span>
+                <i class="fas fa-sun"></i>
             </button>
-            <a href="./SA/SA.html" target="_blank" class="btn btn-info mb-3">
-                <i class="fas fa-book"></i>
+            <a href="./SA Document.pdf" target="_blank" class="btn btn-info mb-3">
+                <i class="fas fa-file-pdf"></i>
                 <span>SA Document</span>
             </a>
         </div>
-        <div style="display: flex; gap: 10px; max-width: 400px; margin-bottom: 1rem;">
-            <select id="currencySelect" class="custom-select" style="width: 100px;">
+        <div class="currency-input-group">
+            <select id="currencySelect" class="custom-select">
                 <option value="USD">USD</option>
                 <option value="TWD">TWD</option>
             </select>
-            <input type="text" id="amountInput" class="form-control" placeholder="Enter amount">
+            <input type="text" id="amountInput" class="currency-form-control" placeholder="輸入合約金額">
         </div>
         <div id="treeView" class="tree-view"></div>
     </div>
