@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政府標單或法人採購標案 - 印鑑用印前申請之檢核表</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lib/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="lib/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -18,29 +19,30 @@
 </head>
 
 <body class="dark-theme">
-    <div class="container mt-5">
+    <div class="container">
         <h2 class="text-center fw-bolder"><strong>政府標單或法人採購標案 - 印鑑用印前申請之檢核表</strong></h2>
-        <h6 class="text-center fw-bolder"><strong>Documentation Review Checklist for Tender document, Government Bids,
-                Contract Form</strong></h6>
-        <br><br>
+        <h6 class="text-center fw-bolder"><strong>Documentation Review Checklist for Tender document, Government Bids, Contract Form</strong></h6>
         <h6 class="text-center text-danger mb-4 fw-bolder"><strong>(此表單適用範圍 - 政府標案、法人採購標案，申請用印須含附此表)</strong></h6>
-        <div class="apply-date-group">
-            <label for="applyDate">申請日期：</label>
-            <input type="text" id="applyDate" class="apply-date-form-control" readonly>
-        </div>
         <div class="button-group">
-            <button id="addButton" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> ADD</button>
-            <button id="expandAllButton" class="btn btn-secondary mb-3"><i class="fas fa-expand-arrows-alt"></i> Expand
-                All</button>
-            <button id="themeButton" class="btn btn-secondary mb-3">
+            <button id="addButton" class="btn btn-primary" data-type="add"><i class="fas fa-plus"></i> ADD</button>
+            <button id="expandAllButton" class="btn btn-secondary" data-type="expandAll"><i class="fas fa-expand-arrows-alt"></i> Expand All</button>
+            <button id="themeButton" class="btn btn-secondary" data-type="theme">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
                 <span>Moon</span>
             </button>
-            <a href="./SA Document.pdf" target="_blank" class="btn btn-info mb-3">
+            <a href="./SA Document.pdf" target="_blank" class="btn btn-info">
                 <i class="fas fa-file-pdf"></i>
                 <span>SA Document</span>
             </a>
+        </div>
+        <br> <!-- 空行 -->
+        <br> <!-- 空行 -->
+        <div class="input-container">
+            <div class="form-group">
+                <label for="applyDate">申請日期：</label>
+                <input type="text" id="applyDate" class="apply-date-form-control" readonly>
+            </div>
         </div>
         <div class="input-container">
             <div class="currency-input-group">
@@ -50,10 +52,22 @@
                 </select>
                 <input type="text" id="amountInput" class="currency-form-control" placeholder="輸入合約金額">
             </div>
+            <div class="form-group">
+                <input type="text" id="bidSubmitter" class="form-control" placeholder="標單提出者">
+            </div>
+            <div class="form-group">
+                <input type="text" id="bidReviewer" class="form-control" placeholder="初審標單者">
+            </div>
         </div>
+        <p class="description-text">The desirability of some items depends on which side of the equation you are on – discloser vs. recipient.
+            <br>Select the View tab, under Formatting marks section, select the Hidden text check box and then <strong>click OK</strong>.
+            <br>Appropriate box: "Y"-清楚、"N"-不清楚、"NA"-不適用
+        </p>
+        <br> <!-- 空行 -->
         <div id="treeView" class="tree-view"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="lib/script.js"></script>
+    <script src="lib/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

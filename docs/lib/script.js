@@ -285,8 +285,55 @@ function createSignItem(signChild, parentSelect = null) {
 }
 
 function createApprovalButtons() {
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'approval-buttons';
+    // 初審退回按鈕的狀態和備註管理
+    const returnButtonStates = {
+        firstReview: {
+            isReturned: false,
+            memo: ''
+        },
+        buHead: {
+            isReturned: false,
+            memo: ''
+        }
+    };
+
+    // 處理退回按鈕點擊
+    function handleReturnClick(type, button, approvalButton) {
+        const state = returnButtonStates[type];
+        
+        Swal.fire({
+            title: '退回原因',
+            input: 'textarea',
+            inputPlaceholder: '意見/或變更描述 (Description of the Comments/ Changes)',
+            inputValue: state.memo,
+            showCancelButton: true,
+            confirmButtonText: '確認',
+            cancelButtonText: '取消',
+            inputAttributes: {
+                style: 'height: 120px'
+            },
+            customClass: {
+                popup: 'return-memo-popup'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                state.memo = result.value;
+                state.isReturned = true;
+                button.innerHTML = type === 'firstReview' ? 
+                    '<i class="fas fa-undo"></i> 已退回' : 
+                    '<i class="fas fa-undo"></i> BU Head 已退回';
+                button.classList.add('returned');
+                
+                // 還原審核按鈕狀態
+                if (approvalButton) {
+                    approvalButton.classList.remove('approved');
+                    approvalButton.innerHTML = type === 'firstReview' ? 
+                        '<i class="fas fa-check"></i> 初審主管審核' : 
+                        '<i class="fas fa-check"></i> BU Head 審核';
+                }
+            }
+        });
+    }
 
     // 初審主管審核按鈕
     const managerButton = document.createElement('button');
@@ -297,13 +344,10 @@ function createApprovalButtons() {
     const managerReturnButton = document.createElement('button');
     managerReturnButton.className = 'approval-button return';
     managerReturnButton.innerHTML = '<i class="fas fa-undo"></i> 初審退回';
+    managerReturnButton.setAttribute('data-type', 'firstReview');
     managerReturnButton.onclick = function (e) {
         e.stopPropagation();
-        // 還原初審主管審核按鈕狀態
-        managerButton.classList.remove('approved');
-        managerButton.innerHTML = '<i class="fas fa-check"></i> 初審主管審核';
-        // 隱藏退回按鈕
-        this.classList.remove('show');
+        handleReturnClick('firstReview', this, managerButton);
     };
 
     managerButton.onclick = function (e) {
@@ -311,8 +355,6 @@ function createApprovalButtons() {
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
-            // 顯示退回按鈕
-            managerReturnButton.classList.add('show');
         }
     };
 
@@ -325,13 +367,10 @@ function createApprovalButtons() {
     const headReturnButton = document.createElement('button');
     headReturnButton.className = 'approval-button return';
     headReturnButton.innerHTML = '<i class="fas fa-undo"></i> BU Head 退回';
+    headReturnButton.setAttribute('data-type', 'buHead');
     headReturnButton.onclick = function (e) {
         e.stopPropagation();
-        // 還原 BU Head 審核按鈕狀態
-        headButton.classList.remove('approved');
-        headButton.innerHTML = '<i class="fas fa-check"></i> BU Head 審核';
-        // 隱藏退回按鈕
-        this.classList.remove('show');
+        handleReturnClick('buHead', this, headButton);
     };
 
     headButton.onclick = function (e) {
@@ -339,15 +378,16 @@ function createApprovalButtons() {
         if (!this.classList.contains('approved')) {
             this.classList.add('approved');
             this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
-            // 顯示退回按鈕
-            headReturnButton.classList.add('show');
         }
     };
 
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'approval-buttons';
     buttonContainer.appendChild(managerButton);
     buttonContainer.appendChild(managerReturnButton);
     buttonContainer.appendChild(headButton);
     buttonContainer.appendChild(headReturnButton);
+
     return buttonContainer;
 }
 
