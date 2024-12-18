@@ -24,6 +24,10 @@
                 Contract Form</strong></h6>
         <br><br>
         <h6 class="text-center text-danger mb-4 fw-bolder"><strong>(此表單適用範圍 - 政府標案、法人採購標案，申請用印須含附此表)</strong></h6>
+        <div class="apply-date-group">
+            <label for="applyDate">申請日期：</label>
+            <input type="text" id="applyDate" class="apply-date-form-control" readonly>
+        </div>
         <div class="button-group">
             <button id="addButton" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> ADD</button>
             <button id="expandAllButton" class="btn btn-secondary mb-3"><i class="fas fa-expand-arrows-alt"></i> Expand
@@ -31,18 +35,21 @@
             <button id="themeButton" class="btn btn-secondary mb-3">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
+                <span>Moon</span>
             </button>
             <a href="./SA Document.pdf" target="_blank" class="btn btn-info mb-3">
                 <i class="fas fa-file-pdf"></i>
                 <span>SA Document</span>
             </a>
         </div>
-        <div class="currency-input-group">
-            <select id="currencySelect" class="custom-select">
-                <option value="USD">USD</option>
-                <option value="TWD">TWD</option>
-            </select>
-            <input type="text" id="amountInput" class="currency-form-control" placeholder="輸入合約金額">
+        <div class="input-container">
+            <div class="currency-input-group">
+                <select id="currencySelect" class="custom-select">
+                    <option value="USD">USD</option>
+                    <option value="TWD">TWD</option>
+                </select>
+                <input type="text" id="amountInput" class="currency-form-control" placeholder="輸入合約金額">
+            </div>
         </div>
         <div id="treeView" class="tree-view"></div>
     </div>

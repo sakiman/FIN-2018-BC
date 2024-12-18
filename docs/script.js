@@ -37,8 +37,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 添加展開/收合按鈕的事件監聽器
         document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
 
-        // 添加主題切換按鈕的事件監聽器
-        document.getElementById('themeButton').addEventListener('click', toggleTheme);
+        // 主題切換按鈕
+        const themeButton = document.getElementById('themeButton');
+        const body = document.body;
+        const moonIcon = themeButton.querySelector('.fa-moon');
+        const sunIcon = themeButton.querySelector('.fa-sun');
+        const buttonText = themeButton.querySelector('span');
+
+        // 檢查主題設置，默認為深色模式
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            body.classList.remove('dark-theme');
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'inline-block';
+            buttonText.textContent = 'Sunshine';
+        } else {
+            // 默認深色模式
+            body.classList.add('dark-theme');
+            moonIcon.style.display = 'inline-block';
+            sunIcon.style.display = 'none';
+            buttonText.textContent = 'Moon';
+        }
+
+        // 主題切換事件
+        themeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            
+            // 更新圖標顯示
+            moonIcon.style.display = isDark ? 'inline-block' : 'none';
+            sunIcon.style.display = isDark ? 'none' : 'inline-block';
+            buttonText.textContent = isDark ? 'Moon' : 'Sunshine';
+            
+            // 保存主題設置
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
 
         // 添加金額輸入驗證和格式化
         const amountInput = document.getElementById('amountInput');
@@ -87,6 +120,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 預設展開到 level 2
         expandToLevel(2);
+
+        // 設置今日日期
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        document.getElementById('applyDate').value = `${year}-${month}-${day}`;
     } catch (error) {
         console.error('Error loading JSON:', error);
     }
@@ -500,22 +540,6 @@ function expandToLevel(level) {
             }
         }
     });
-}
-
-function toggleTheme() {
-    const themeButton = document.getElementById('themeButton');
-    const body = document.body;
-    const isDark = body.classList.contains('dark-theme');
-
-    if (isDark) {
-        // 切換到淺色主題
-        body.classList.remove('dark-theme');
-        themeButton.innerHTML = '<i class="fas fa-sun"></i> <span>Sunshine</span>';
-    } else {
-        // 切換到深色主題
-        body.classList.add('dark-theme');
-        themeButton.innerHTML = '<i class="fas fa-moon"></i> <span>Moon</span>';
-    }
 }
 
 // 初始化容器
