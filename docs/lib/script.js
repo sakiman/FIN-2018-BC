@@ -173,8 +173,27 @@ function getCurrentDateTime() {
 }
 
 function createSignItem(signChild, parentSelect = null) {
+    // 生成基於節點路徑的唯一ID
+    const getNodePath = (node) => {
+        let path = [];
+        // 確保簽核層級格式的一致性
+        if (node.signlevel) {
+            // 如果是複審（包含 "-" 的情況），直接使用原格式
+            // 例如：L1-2，而不是 LN1-2
+            path.push(`L${node.signlevel}`);
+        }
+        if (node.level) path.push(`N${node.level}`);
+        if (typeof node.index !== 'undefined') path.push(`I${node.index}`);
+        return path.join('-');
+    };
+
     const signItem = document.createElement('div');
     signItem.className = `sign-item sign-level-${signChild.signlevel || '1'}`;
+
+    // 生成唯一ID
+    const nodeId = getNodePath(signChild);
+    // 將nodeId保存到元素上，方便之後回寫數據時使用
+    signItem.dataset.nodePath = nodeId;
 
     // 只有當 show 為 "Y" 時才顯示簽核欄位
     if (signChild.show === "Y") {
@@ -188,22 +207,27 @@ function createSignItem(signChild, parentSelect = null) {
             flexInput.type = 'text';
             flexInput.className = 'flex-input';
             flexInput.placeholder = '請輸入文字...';
+            flexInput.id = `flex-${nodeId}`;
+            flexInput.dataset.nodePath = nodeId;  // 保存節點路徑
+            const flexLabel = document.createElement('label');
+            flexLabel.htmlFor = flexInput.id;
+            flexLabel.textContent = '補充說明:';
+            selectField.appendChild(flexLabel);
             selectField.appendChild(flexInput);
         }
 
+        const select = document.createElement('select');
+        const selectId = `select-${nodeId}`;
+        select.id = selectId;
+        select.className = 'custom-select';
+        select.style.width = '80px';
+        select.dataset.nodePath = nodeId;  // 保存節點路徑
+
         const selectLabel = document.createElement('label');
-        // 根據 signlevel 設定不同的標籤文字
+        selectLabel.htmlFor = selectId;
         selectLabel.textContent = signChild.signlevel === "1" ? "初審:" :
             signChild.signlevel === "1-2" ? "複審:" :
                 "Y/N/NA:";
-
-        const select = document.createElement('select');
-        select.className = 'custom-select';
-        select.style.width = '80px';  // 設置固定寬度
-        // 如果有父層級且父層級為空白，則禁用此下拉選單
-        if (parentSelect && parentSelect.value === '') {
-            select.disabled = true;
-        }
 
         ['', 'Y', 'N', 'NA'].forEach(option => {
             const opt = document.createElement('option');
@@ -223,25 +247,35 @@ function createSignItem(signChild, parentSelect = null) {
         const signerField = document.createElement('div');
         signerField.className = 'sign-field' + (select.value === '' ? ' hidden-field' : '');
 
+        const signerId = `signer-${nodeId}`;
+        const signerSpan = document.createElement('span');
+        signerSpan.id = signerId;
+        signerSpan.dataset.nodePath = nodeId;  // 保存節點路徑
+        signerSpan.textContent = select.value ? 'Sankalp' : '';
+
         const signerLabel = document.createElement('label');
+        signerLabel.htmlFor = signerId;
         signerLabel.textContent = '簽核者:';
-        const signerValue = document.createElement('span');
-        signerValue.textContent = select.value ? 'Sankalp' : '';
 
         signerField.appendChild(signerLabel);
-        signerField.appendChild(signerValue);
+        signerField.appendChild(signerSpan);
         signItem.appendChild(signerField);
 
         const dateField = document.createElement('div');
         dateField.className = 'sign-field' + (select.value === '' ? ' hidden-field' : '');
 
+        const dateId = `date-${nodeId}`;
+        const dateSpan = document.createElement('span');
+        dateSpan.id = dateId;
+        dateSpan.dataset.nodePath = nodeId;  // 保存節點路徑
+        dateSpan.textContent = select.value ? getCurrentDateTime() : '';
+
         const dateLabel = document.createElement('label');
+        dateLabel.htmlFor = dateId;
         dateLabel.textContent = '簽核日期:';
-        const dateValue = document.createElement('span');
-        dateValue.textContent = select.value ? getCurrentDateTime() : '';
 
         dateField.appendChild(dateLabel);
-        dateField.appendChild(dateValue);
+        dateField.appendChild(dateSpan);
         signItem.appendChild(dateField);
 
         // 遞迴處理子層級的 signchildren
@@ -267,8 +301,8 @@ function createSignItem(signChild, parentSelect = null) {
             if (select.value === '') {
                 signerField.classList.add('hidden-field');
                 dateField.classList.add('hidden-field');
-                signerValue.textContent = '';
-                dateValue.textContent = '';
+                signerSpan.textContent = '';
+                dateSpan.textContent = '';
 
                 // 清空並禁用所有子層級
                 if (childrenContainer) {
@@ -286,8 +320,8 @@ function createSignItem(signChild, parentSelect = null) {
             } else {
                 signerField.classList.remove('hidden-field');
                 dateField.classList.remove('hidden-field');
-                signerValue.textContent = 'Sankalp';
-                dateValue.textContent = getCurrentDateTime();
+                signerSpan.textContent = 'Sankalp';
+                dateSpan.textContent = getCurrentDateTime();
 
                 // 啟用所有子層級
                 if (childrenContainer) {
