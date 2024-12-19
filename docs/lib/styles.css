@@ -503,7 +503,7 @@ input.date-input:focus {
     padding: 4px 12px;  /* 減少上下內邊距 */
     font-size: 12px;
     color: #fff;
-    background-color: #28a745;
+    background-color: #55b56bbe;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -519,7 +519,7 @@ input.date-input:focus {
 }
 
 .approval-button.head {
-    background-color: #17a2b8;
+    background-color: #17a3b8c6;
 }
 
 .approval-button.head:hover {
@@ -536,7 +536,7 @@ input.date-input:focus {
 }
 
 .approval-button.return {
-    background-color: #2280e5;
+    background-color: #408ee299;
     margin-left: 0px;
 }
 
@@ -1007,4 +1007,20 @@ label {
 #bidSubmitter,
 #bidReviewer {
     width: 215px !important;
+}
+
+/* 併/展按鈕樣式 */
+.approval-button.toggle-expand {
+    background-color: #6c757d99;
+    margin-left: 8px;
+    min-width: 45px;
+    padding: 4px 8px;
+}
+
+.approval-button.toggle-expand:hover {
+    background-color: #5a6268;
+}
+
+.approval-button.toggle-expand i {
+    margin-right: 4px;
 }

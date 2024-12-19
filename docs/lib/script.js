@@ -313,7 +313,7 @@ function createSignItem(signChild, parentSelect = null) {
     return signItem;
 }
 
-function createApprovalButtons() {
+function createApprovalButtons(node) {  
     // 初審退回按鈕的狀態和備註管理
     const returnButtonStates = {
         firstReview: {
@@ -420,12 +420,53 @@ function createApprovalButtons() {
         }
     };
 
+    // 建立併/展按鈕（只在 level 2 顯示）
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'approval-button toggle-expand';
+    toggleButton.innerHTML = '<i class="fas fa-compress-alt"></i> 併';
+    toggleButton.onclick = function(e) {
+        e.stopPropagation();
+        const treeItem = this.closest('.tree-item');
+        const isCompressed = this.querySelector('i').classList.contains('fa-compress-alt');
+        
+        if (isCompressed) {
+            // 展開所有節點
+            const allNodeContents = treeItem.querySelectorAll('.node-content');
+            allNodeContents.forEach(content => {
+                content.classList.remove('hidden');
+            });
+            const allToggleBtns = treeItem.querySelectorAll('.toggle-btn i');
+            allToggleBtns.forEach(btn => {
+                btn.className = 'fas fa-minus';
+            });
+            // 更新按鈕狀態
+            this.innerHTML = '<i class="fas fa-expand-alt"></i> 展';
+        } else {
+            // 收合所有節點
+            const allNodeContents = treeItem.querySelectorAll('.node-content');
+            allNodeContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            const allToggleBtns = treeItem.querySelectorAll('.toggle-btn i');
+            allToggleBtns.forEach(btn => {
+                btn.className = 'fas fa-plus';
+            });
+            // 更新按鈕狀態
+            this.innerHTML = '<i class="fas fa-compress-alt"></i> 併';
+        }
+    };
+
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'approval-buttons';
     buttonContainer.appendChild(managerButton);
     buttonContainer.appendChild(managerReturnButton);
     buttonContainer.appendChild(headButton);
     buttonContainer.appendChild(headReturnButton);
+    
+    // 只在 level 2 添加併/展按鈕
+    if (node && node.level === "2") {  
+        buttonContainer.appendChild(toggleButton);
+    }
 
     return buttonContainer;
 }
@@ -433,7 +474,7 @@ function createApprovalButtons() {
 function renderTree(node, parentElement, level = 0) {
     const treeItem = document.createElement('div');
     treeItem.className = `tree-item level-${level}`;
-    treeItem.setAttribute('data-level', level);  // 添加 data-level 屬性
+    treeItem.setAttribute('data-level', node.level || level.toString());  
 
     const treeContent = document.createElement('div');
     treeContent.className = 'tree-content';
@@ -453,8 +494,8 @@ function renderTree(node, parentElement, level = 0) {
     title.textContent = node.title;
 
     // 如果層級是 2，添加審核按鈕
-    if (level === 2) {
-        const approvalButtons = createApprovalButtons();
+    if (node.level === "2") {  
+        const approvalButtons = createApprovalButtons(node);  
         title.appendChild(approvalButtons);
     }
 
@@ -569,9 +610,9 @@ function renderTree(node, parentElement, level = 0) {
 
 function toggleAllNodes() {
     const expandAllButton = document.getElementById('expandAllButton');
-    const isExpanding = expandAllButton.innerHTML.includes('Expand');
+    const isCollapsing = expandAllButton.innerHTML.includes('Collapse');
 
-    if (isExpanding) {
+    if (isCollapsing) {
         // 展開所有項目
         const allToggleButtons = document.querySelectorAll('.toggle-btn');
         allToggleButtons.forEach(btn => {
@@ -582,11 +623,18 @@ function toggleAllNodes() {
                 childrenContainer.classList.remove('hidden');
             }
         });
-        expandAllButton.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Collapse All';
+        // 更新併/展按鈕狀態
+        const toggleExpandButtons = document.querySelectorAll('.toggle-expand');
+        toggleExpandButtons.forEach(btn => {
+            btn.innerHTML = '<i class="fas fa-expand-alt"></i> 展';
+        });
+        // 更新按鈕文字
+        expandAllButton.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Expand All';
     } else {
         // 回到預設狀態（展開到 level 2）
         expandToLevel(2);
-        expandAllButton.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Expand All';
+        // 更新按鈕文字
+        expandAllButton.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Collapse All';
     }
 }
 
@@ -618,5 +666,11 @@ function expandToLevel(level) {
                 toggleBtn.className = 'fas fa-plus';
             }
         }
+    });
+    
+    // 更新併/展按鈕狀態為初始狀態
+    const toggleExpandButtons = document.querySelectorAll('.toggle-expand');
+    toggleExpandButtons.forEach(btn => {
+        btn.innerHTML = '<i class="fas fa-compress-alt"></i> 併';
     });
 }
