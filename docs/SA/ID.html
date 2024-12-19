@@ -158,7 +158,18 @@
             <img src="https://img.shields.io/badge/Prism--JSON--Highlight-2891C8" alt="Prism JSON Highlight">
         </div>
 
-        <h2>目的</h2>
+        <h2>目錄</h2>
+        <ul>
+            <li><a href="#目的">目的</a></li>
+            <li><a href="#節點路徑生成函數-getnodepath">節點路徑生成函數-getNodePath</a></li>
+            <li><a href="#dataset-屬性使用">Dataset 屬性使用</a></li>
+            <li><a href="#添加唯一-id-的元件">添加唯一 ID 的元件</a></li>
+            <li><a href="#json-回寫功能的優勢">JSON 回寫功能的優勢</a></li>
+            <li><a href="#使用示例">使用示例</a></li>
+            <li><a href="#resource">Resource</a></li>
+        </ul>
+
+        <h2 id="目的">目的</h2>
         <h3>使得將來實現數據回寫 JSON 時會更加容易和可靠</h3>
         <ul>
             <li>ID 基於數據結構生成，所以相同的節點每次渲染都會得到相同的 ID</li>
@@ -168,7 +179,7 @@
             <li>可保存成完整的標案 JSON 文檔</li>
         </ul>
 
-        <h2>節點路徑生成函數 (getNodePath)</h2>
+        <h2 id="節點路徑生成函數-getnodepath">節點路徑生成函數 (getNodePath)</h2>
         
         <div class="code-container">
             <div class="code-title">JavaScript 函數實現</div>
@@ -195,7 +206,7 @@
             <li>節點索引 (index) 為 0</li>
         </ul>
 
-        <h2>Dataset 屬性使用</h2>
+        <h2 id="dataset-屬性使用">Dataset 屬性使用</h2>
 
         <h3>dataset.nodePath</h3>
         <p>為了方便追蹤和回寫數據，我們在 DOM 元素上使用 <code>dataset.nodePath</code> 保存節點路徑：</p>
@@ -211,7 +222,7 @@
             <pre class="code-content"><code class="language-javascript">const nodePath = element.dataset.nodePath;  // 例如：'L1-N2-I0'</code></pre>
         </div>
 
-        <h2>已添加唯一 ID 的元件</h2>
+        <h2 id="添加唯一-id-的元件">添加唯一 ID 的元件</h2>
 
         <h3>ID 格式說明</h3>
         <p>所有元素的 ID 都基於 nodeId 生成，格式為：<code>[元素類型]-[nodeId]</code></p>
@@ -388,59 +399,7 @@ const labSecondApprover = document.getElementById('signer-L1-2-N5-I1').textConte
 const labSecondApprovalDate = document.getElementById('date-L1-2-N5-I1').textContent;</code></pre>
         </div>
 
-        <h2>元件清單及其 ID 設置</h2>
-
-        <h3>1. 簽核項目容器</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">signItem.dataset.nodePath = nodeId;</code></pre>
-        </div>
-
-        <h3>2. 文字輸入框</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">flexInput.id = `flex-${nodeId}`;
-flexInput.dataset.nodePath = nodeId;</code></pre>
-        </div>
-
-        <h3>3. 下拉選單</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">select.id = `select-${nodeId}`;
-select.dataset.nodePath = nodeId;</code></pre>
-        </div>
-
-        <h3>4. 簽核者欄位</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">signerSpan.id = `signer-${nodeId}`;
-signerSpan.dataset.nodePath = nodeId;</code></pre>
-        </div>
-
-        <h3>5. 日期欄位</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">dateSpan.id = `date-${nodeId}`;
-dateSpan.dataset.nodePath = nodeId;</code></pre>
-        </div>
-
-        <h3>ID 查找示例</h3>
-        <div class="code-container">
-            <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">// 查找特定節點的文字輸入框
-const flexInput = document.getElementById('flex-L1-N2-I0');
-
-// 查找特定節點的下拉選單
-const select = document.getElementById('select-L1-N2-I0');
-
-// 查找特定節點的簽核者欄位
-const signer = document.getElementById('signer-L1-N2-I0');
-
-// 查找特定節點的日期欄位
-const date = document.getElementById('date-L1-N2-I0');</code></pre>
-        </div>
-
-        <h2>JSON 回寫功能的優勢</h2>
+        <h2 id="json-回寫功能的優勢">JSON 回寫功能的優勢</h2>
 
         <h3>1. 精確定位節點</h3>
         <p>可以通過 nodePath 快速找到對應的 DOM 元素：</p>
@@ -481,7 +440,7 @@ const date = document.getElementById('date-L1-N2-I0');</code></pre>
             <li>確保數據一致性</li>
         </ul>
 
-        <h2>使用示例</h2>
+        <h2 id="使用示例">使用示例</h2>
 
         <h3>查找特定節點的元素</h3>
         <div class="code-container">
@@ -508,6 +467,14 @@ const signerElement = document.querySelector('span[id^="signer-"][data-node-path
     saveJSON(jsonData);
 }</code></pre>
         </div>
+        <h2 id="resource">Resource</h2>
+        <ul>
+            <li><a id="markdown" href="https://markdown.tw/" target="_blank">Markdown</a></li>
+            <li><a id="mermaid" href="https://mermaid.js.org/" target="_blank">Mermaid</a> - <strong>Markdown 裡放圖表</strong></li>
+            <li><a id="shields" href="https://shields.io/" target="_blank">Shields.io</a> - <strong>Markdown 檔 Badge 徽章效果 API</strong></li>
+            <li><a id="simple-icons" href="https://github.com/simple-icons/simple-icons/blob/master/slugs.md" target="_blank">Simple-icons badge slug</a> - <strong>Markdown 檔 Badge 徽章效果清單</strong></li>
+            <li><a id="json-editor" href="https://jsoneditoronline.org/" target="_blank">JSON Edior Online</a> - <strong>JSON 線上編輯器含排版美化</strong></li>
+        </ul>
     </div>
     <script>
         // 初始化 Prism.js

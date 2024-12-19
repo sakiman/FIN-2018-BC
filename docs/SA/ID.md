@@ -10,6 +10,15 @@
 ![](https://img.shields.io/badge/Flatpickr-777)
 ![](https://img.shields.io/badge/Prism--JSON--Highlight-2891C8)
 
+## 目錄
+- [目的](#目的)
+- [節點路徑生成函數-getNodePath](#節點路徑生成函數-getnodepath)
+- [Dataset 屬性使用](#dataset-屬性使用)
+- [添加唯一 ID 的元件](#添加唯一-id-的元件)
+- [JSON 回寫功能的優勢](#json-回寫功能的優勢)
+- [使用示例](#使用示例)
+- [Resource](#resource)
+
 ## 目的
 ### 使得將來實現數據回寫 JSON 時會更加容易和可靠
 - ID 基於數據結構生成，所以相同的節點每次渲染都會得到相同的 ID
@@ -18,7 +27,7 @@
 - 便於調試和追蹤特定元素
 - 可保存成完整的標案 JSON 文檔
 
-## 節點路徑生成函數 (getNodePath)
+## 節點路徑生成函數-getNodePath
 
 ```javascript
 const getNodePath = (node) => {
@@ -54,7 +63,7 @@ element.dataset.nodePath = nodeId;
 const nodePath = element.dataset.nodePath;  // 例如：'L1-N2-I0'
 ```
 
-## 已添加唯一 ID 的元件
+## 添加唯一 ID 的元件
 
 ### ID 格式說明
 所有元素的 ID 都基於 nodeId 生成，格式為：`[元素類型]-[nodeId]`
@@ -328,3 +337,9 @@ function updateJSON(nodePath, data) {
     saveJSON(jsonData);
 }
 ```
+## Resource
+- [Markdown](https://markdown.tw/)
+- [Mermaid](https://mermaid.js.org/) - **Markdown 裡放圖表**
+- [Shields.io](https://shields.io/) - **Markdown 檔 Badge 徽章效果 API**
+- [Simple-icons badge slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md) - **Markdown 檔 Badge 徽章效果清單**
+- [JSON Edior Online](https://jsoneditoronline.org/) - **JSON 線上編輯器含排版美化**

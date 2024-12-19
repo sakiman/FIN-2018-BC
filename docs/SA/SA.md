@@ -21,6 +21,8 @@
 - [系統流程](#系統流程)
 - [安全性考慮](#安全性考慮)
 - [相關文件](#相關文件)
+- [後續優化建議](#後續優化建議)
+- [其它資源](#resource)
 
 ## 系統概述
 
@@ -309,3 +311,10 @@ sequenceDiagram
    - 添加操作引導功能
    - 優化移動端適配
    - 增加快捷鍵支持
+
+## Resource
+- [Markdown](https://markdown.tw/)
+- [Mermaid](https://mermaid.js.org/) - **Markdown 裡放圖表**
+- [Shields.io](https://shields.io/) - **Markdown 檔 Badge 徽章效果 API**
+- [Simple-icons badge slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md) - **Markdown 檔 Badge 徽章效果清單**
+- [JSON Edior Online](https://jsoneditoronline.org/) - **JSON 線上編輯器含排版美化**
