@@ -5,17 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政府標單或法人採購標案 - 印鑑用印前申請之檢核表</title>
-    <link rel="stylesheet" href="lib/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="lib/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- CSS 引用順序 -->
+    <link rel="stylesheet" href="./lib/styles.css">
+    <link rel="stylesheet" href="./lib/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- JavaScript 引用順序 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/zh-tw.js"></script>
+    <script src="lib/sweetalert2.all.min.js"></script>
+    <script src="lib/script.js"></script>
+
     <!-- 設定 favicon -->
     <link rel="icon" href="./favicon/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./favicon/favicon.png" type="image/png">
+    <link rel="icon" href="./favicon/favicon_original.png" type="image/png">
 </head>
 
 <body class="dark-theme">
@@ -39,9 +49,15 @@
         <br> <!-- 空行 -->
         <br> <!-- 空行 -->
         <div class="input-container">
-            <div class="form-group">
-                <label for="applyDate">申請日期：</label>
+            <div class="form-group"> 
                 <input type="text" id="applyDate" class="apply-date-form-control" readonly>
+                <label for="applyDate">申請日期</label>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="form-group">
+                <input type="text" id="bidDocumentName" class="form-control" placeholder="輸入標單(文件)名稱">
+                <label for="bidDocumentName">標單(文件)名稱</label>
             </div>
         </div>
         <div class="input-container">
@@ -51,14 +67,22 @@
                     <option value="TWD">TWD</option>
                 </select>
                 <input type="text" id="amountInput" class="currency-form-control" placeholder="輸入合約金額">
-            </div>
-            <div class="form-group">
-                <input type="text" id="bidSubmitter" class="form-control" placeholder="標單提出者">
-            </div>
-            <div class="form-group">
-                <input type="text" id="bidReviewer" class="form-control" placeholder="初審標單者">
+                <label for="amountInput">合約金額</label>
             </div>
         </div>
+        <div class="input-container">
+            <div class="form-group">
+                <input type="text" id="bidSubmitter" class="form-control" placeholder="輸入標單提出者">
+                <label for="bidSubmitter">標單提出者</label>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="form-group">
+                <input type="text" id="bidReviewer" class="form-control" placeholder="輸入初審標單者">
+                <label for="bidReviewer">初審標單者</label>
+            </div>
+        </div>
+        <div class="description-separator"></div>
         <p class="description-text">The desirability of some items depends on which side of the equation you are on – discloser vs. recipient.
             <br>Select the View tab, under Formatting marks section, select the Hidden text check box and then <strong>click OK</strong>.
             <br>Appropriate box: "Y"-清楚、"N"-不清楚、"NA"-不適用
@@ -66,8 +90,6 @@
         <br> <!-- 空行 -->
         <div id="treeView" class="tree-view"></div>
     </div>
-    <script src="lib/script.js"></script>
-    <script src="lib/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

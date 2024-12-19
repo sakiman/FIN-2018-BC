@@ -404,15 +404,33 @@ input.date-input:focus {
     padding: 0.5rem 0;
 }
 
+.button-group .btn {
+    height: 38px;  /* Bootstrap 默認按鈕高度 */
+    line-height: 1.5;
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-group a.btn {
+    text-decoration: none;
+    height: 38px;  /* 確保與其他按鈕一致 */
+}
+
+.button-group .btn i {
+    margin-right: 5px;
+}
+
 #addButton, #expandAllButton, #themeButton, #saDocumentButton {
-    padding: 8px 12px;
+    padding: 6px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
     margin: 0;
     width: 85px;
-    height: 36px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -438,11 +456,18 @@ input.date-input:focus {
 }
 
 #expandAllButton {
-    width: 120px;
+    min-width: 140px;  /* 增加最小寬度 */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* 確保圖標有適當的間距 */
+#expandAllButton i {
+    margin-right: 5px;
 }
 
 .btn {
-    padding: 8px 12px;
+    padding: 6px 12px;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -453,6 +478,7 @@ input.date-input:focus {
     gap: 8px;
     transition: background-color 0.3s;
     margin: 0 !important;
+    height: 38px;
 }
 
 .btn:hover {
@@ -474,7 +500,7 @@ input.date-input:focus {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 4px 8px;
+    padding: 4px 12px;  /* 減少上下內邊距 */
     font-size: 12px;
     color: #fff;
     background-color: #28a745;
@@ -482,6 +508,10 @@ input.date-input:focus {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+    height: 24px;  /* 減少按鈕高度 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .approval-button:hover {
@@ -554,12 +584,11 @@ input.date-input:focus {
 
 /* 包含 currency-input-group 的 input-container 添加下方邊框 */
 .input-container:has(.currency-input-group) {
-    border-bottom: 1px solid #666;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
 }
 
 .dark-theme .input-container:has(.currency-input-group) {
-    border-bottom-color: #666;
+    padding-bottom: 0px;
 }
 
 /* 金額輸入區域樣式 */
@@ -568,6 +597,7 @@ input.date-input:focus {
     align-items: center;
     gap: 10px;
     margin: 0;
+    padding: 0px 0;
 }
 
 .currency-input-group .custom-select {
@@ -637,6 +667,9 @@ input.date-input:focus {
 
 /* 主題切換按鈕樣式 */
 #themeButton {
+    min-width: 120px;  /* 設定最小寬度 */
+    padding-left: 15px;
+    padding-right: 15px;
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
@@ -657,6 +690,11 @@ body:not(.dark-theme) #themeButton {
 body:not(.dark-theme) #themeButton:hover {
     background-color: #e0a800;
     border-color: #d39e00;
+}
+
+/* Ensure icons in theme button have proper spacing */
+#themeButton i {
+    margin-right: 5px;
 }
 
 /* 深色主題 */
@@ -790,7 +828,7 @@ body.sunshine-theme .sign-item {
 .dark-theme .sign-field label,
 .dark-theme .sign-field select,
 .dark-theme .tree-title {
-    color: #fff;
+    color: #777;
 }
 
 .dark-theme .sign-item {
@@ -816,7 +854,7 @@ body.sunshine-theme .sign-item {
 
 .form-control {
     display: block;
-    width: 150px;
+    width: 180px;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -862,6 +900,7 @@ body.sunshine-theme .sign-item {
     color: #666;
     margin: 10px 0;
     line-height: 1.4;
+    transition: color 0.3s ease;
 }
 
 .dark-theme .description-text {
@@ -880,4 +919,86 @@ body.sunshine-theme .sign-item {
 
 .return-memo-popup .swal2-cancel {
     background-color: #6c757d !important;
+}
+
+/* 標單文件名稱輸入框樣式 */
+#bidDocumentName {
+    width: 535px !important;
+}
+
+/* Dark theme support */
+.dark-theme #bidDocumentName {
+    background-color: #444;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Dark theme input placeholders */
+.dark-theme input::placeholder {
+    color: #999 !important;
+    opacity: 1;
+}
+
+.dark-theme input::-webkit-input-placeholder {
+    color: #999 !important;
+    opacity: 1;
+}
+
+.dark-theme input::-moz-placeholder {
+    color: #999 !important;
+    opacity: 1;
+}
+
+.dark-theme input:-ms-input-placeholder {
+    color: #999 !important;
+    opacity: 1;
+}
+
+.dark-theme input:-moz-placeholder {
+    color: #999 !important;
+    opacity: 1;
+}
+
+/* 分隔線樣式 */
+.description-separator {
+    border-top: 1px solid #666;
+    margin: 20px 0;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.dark-theme .description-separator {
+    border-color: #666;
+}
+
+.description-text {
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.dark-theme .description-text {
+    color: #aaa;
+}
+
+/* 表單標籤樣式 */
+label {
+    margin-bottom: 0rem;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.form-group label {
+    margin-bottom: 0rem;
+}
+
+.input-container label {
+    margin-bottom: 0rem;
+}
+
+.dark-theme label {
+    color: #888;
 }

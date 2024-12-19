@@ -37,6 +37,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 添加展開/收合按鈕的事件監聽器
         document.getElementById('expandAllButton').addEventListener('click', toggleAllNodes);
 
+        // 添加按鈕點擊事件處理
+        document.getElementById('addButton').addEventListener('click', async function () {
+            try {
+                async function createDateFolders() {
+                    try {
+                        const now = new Date();
+                        const year = now.getFullYear();
+                        const month = String(now.getMonth() + 1).padStart(2, '0');
+
+                        // 只顯示訊息，因為在靜態網頁中無法創建實際的資料夾
+                        alert(`在實際環境中會創建以下資料夾：\n${year}/${year}-${month}`);
+
+                        // 如果需要，您可以將資料夾資訊儲存在 localStorage 中
+                        const folders = JSON.parse(localStorage.getItem('createdFolders') || '[]');
+                        folders.push(`${year}/${year}-${month}`);
+                        localStorage.setItem('createdFolders', JSON.stringify(folders));
+
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('操作失敗：' + error.message);
+                    }
+                }
+                await createDateFolders();
+            } catch (error) {
+                alert('錯誤：無法連接到服務器');
+                console.error('Error:', error);
+            }
+        });
+
         // 主題切換按鈕
         const themeButton = document.getElementById('themeButton');
         const body = document.body;
@@ -404,6 +433,7 @@ function createApprovalButtons() {
 function renderTree(node, parentElement, level = 0) {
     const treeItem = document.createElement('div');
     treeItem.className = `tree-item level-${level}`;
+    treeItem.setAttribute('data-level', level);  // 添加 data-level 屬性
 
     const treeContent = document.createElement('div');
     treeContent.className = 'tree-content';
@@ -573,56 +603,20 @@ function expandAllNodes() {
 }
 
 function expandToLevel(level) {
-    const allTreeItems = document.querySelectorAll('.tree-item');
-    allTreeItems.forEach(item => {
-        const currentLevel = parseInt(item.className.match(/level-(\d+)/)[1]);
-        const toggleBtn = item.querySelector('.toggle-btn');
+    const allItems = document.querySelectorAll('.tree-item');
+    allItems.forEach(item => {
+        const currentLevel = parseInt(item.getAttribute('data-level') || '0');
         const nodeContent = item.querySelector('.node-content');
-
-        if (toggleBtn && nodeContent) {
-            const icon = toggleBtn.querySelector('i');
+        const toggleBtn = item.querySelector('.toggle-btn i');
+        
+        if (nodeContent && toggleBtn) {
             if (currentLevel < level) {
-                icon.className = 'fas fa-minus';
                 nodeContent.classList.remove('hidden');
+                toggleBtn.className = 'fas fa-minus';
             } else {
-                icon.className = 'fas fa-plus';
                 nodeContent.classList.add('hidden');
+                toggleBtn.className = 'fas fa-plus';
             }
         }
     });
 }
-
-// 初始化容器
-const container = document.createElement('div');
-container.className = 'tree-container';
-
-document.body.appendChild(container);
-
-// 添加按鈕點擊事件處理
-document.getElementById('addButton').addEventListener('click', async function () {
-    try {
-        async function createDateFolders() {
-            try {
-                const now = new Date();
-                const year = now.getFullYear();
-                const month = String(now.getMonth() + 1).padStart(2, '0');
-
-                // 只顯示訊息，因為在靜態網頁中無法創建實際的資料夾
-                alert(`在實際環境中會創建以下資料夾：\n${year}/${year}-${month}`);
-
-                // 如果需要，您可以將資料夾資訊儲存在 localStorage 中
-                const folders = JSON.parse(localStorage.getItem('createdFolders') || '[]');
-                folders.push(`${year}/${year}-${month}`);
-                localStorage.setItem('createdFolders', JSON.stringify(folders));
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('操作失敗：' + error.message);
-            }
-        }
-        createDateFolders();
-    } catch (error) {
-        alert('錯誤：無法連接到服務器');
-        console.error('Error:', error);
-    }
-});
