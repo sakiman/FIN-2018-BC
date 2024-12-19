@@ -389,6 +389,15 @@ function createApprovalButtons(node) {
             const returnButton = this.parentElement.querySelector('[data-type="firstReview"]');
             returnButton.disabled = true;
             returnButton.classList.add('disabled');
+
+            // 啟用 BU Head 按鈕
+            const headButton = this.parentElement.querySelector('.approval-button.head');
+            const headReturnButton = this.parentElement.querySelector('[data-type="buHead"]');
+            
+            headButton.disabled = false;
+            headButton.classList.remove('disabled');
+            headReturnButton.disabled = false;
+            headReturnButton.classList.remove('disabled');
         }
     };
 
@@ -396,12 +405,16 @@ function createApprovalButtons(node) {
     const headButton = document.createElement('button');
     headButton.className = 'approval-button head';
     headButton.innerHTML = '<i class="fas fa-check"></i> BU Head 審核';
+    headButton.disabled = true; // Set disabled by default
+    headButton.classList.add('disabled'); // Add disabled class for styling
 
     // BU Head 退回按鈕
     const headReturnButton = document.createElement('button');
     headReturnButton.className = 'approval-button return';
     headReturnButton.innerHTML = '<i class="fas fa-undo"></i> BU Head 退回';
     headReturnButton.setAttribute('data-type', 'buHead');
+    headReturnButton.disabled = true; // Set disabled by default
+    headReturnButton.classList.add('disabled'); // Add disabled class for styling
     headReturnButton.onclick = function (e) {
         e.stopPropagation();
         handleReturnClick('buHead', this, headButton);
