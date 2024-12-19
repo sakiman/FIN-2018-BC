@@ -43,17 +43,13 @@ h1 {
 }
 
 .tree-content {
-    display: block;
+    display: flex;
+    align-items: center;
     min-height: 24px;
     line-height: 1.5;
-    padding: 2px 0;
+    padding: 4px;
     cursor: pointer;
-    padding: 2px 4px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    word-break: break-word;
-    overflow: visible;
-    margin: 0;
+    position: relative;
 }
 
 .tree-content:hover {
@@ -62,8 +58,8 @@ h1 {
 
 .toggle-btn {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -24px;
+    top: 4px;
     display: inline-block;
     width: 24px;
     height: 24px;
@@ -73,6 +69,7 @@ h1 {
     vertical-align: baseline;
     margin: 0;
     padding: 0;
+    z-index: 1;
 }
 
 .toggle-btn i {
@@ -89,13 +86,13 @@ h1 {
 }
 
 .tree-title {
-    display: inline-block;
+    position: relative;
+    flex: 1;
     min-height: 24px;
-    line-height: 24px;
-    vertical-align: baseline;
-    margin: 0;
-    padding: 0;
-    color: #333;
+    line-height: 1.4;
+    word-break: break-word;
+    padding-right: 10px;
+    margin-left: 0;
 }
 
 .tree-title.multiline {
@@ -490,17 +487,21 @@ input.date-input:focus {
 }
 
 .approval-buttons {
-    display: inline-flex;
-    gap: 8px;
-    margin-left: 15px;
-    vertical-align: middle;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    position: relative;
+    z-index: 2;
 }
 
 .approval-button {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 4px 12px;  /* 減少上下內邊距 */
+    justify-content: center;
+    gap: 3px;
+    padding: 2px 8px;
     font-size: 12px;
     color: #fff;
     background-color: #55b56bbe;
@@ -508,10 +509,10 @@ input.date-input:focus {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
-    height: 24px;  /* 減少按鈕高度 */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    height: 16px;
+    min-width: fit-content;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .approval-button:hover {
