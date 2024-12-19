@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定 favicon -->
+    <link rel="icon" href="../favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon.png" type="image/png">
+    <!-- 設定 favicon -->
+    <title>ID 生成策略說明文檔</title>
+    <!-- 程式碼格式化顯示套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+        }
+        @media (max-width: 767px) {
+            .container {
+                padding: 15px;
+            }
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+            border-bottom: 1px solid #404040;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+        hr {
+            background-color: #404040;
+            border: 0;
+            height: 1px;
+        }
+        blockquote {
+            color: #9e9e9e;
+            border-left: 0.25em solid #404040;
+            padding-left: 1em;
+            margin: 1em 0;
+        }
+        code {
+            background-color: #3d3d3d;
+            color: #e0e0e0;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #3d3d3d;
+            border: 1px solid #404040;
+            padding: 16px;
+            overflow: auto;
+            border-radius: 6px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #79b8ff;
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* 程式碼格式化顯示樣式 */
+        .code-container {
+            background: #2d2d2d;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .code-container pre {
+            margin: 0;
+            padding: 20px;
+        }
+        /* 調整 Prism.js 的樣式以符合深色主題 */
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+            background: #2d2d2d;
+        }
+        .token.property {
+            color: #7ee787;
+        }
+        .token.string {
+            color: #a5d6ff;
+        }
+        .token.number {
+            color: #ff7b72;
+        }
+        .token.boolean {
+            color: #ff7b72;
+        }
+        .token.null {
+            color: #ff7b72;
+        }
+        .badges {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .code-title {
+            background: #3d3d3d;
+            color: #e0e0e0;
+            padding: 8px 16px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            border-bottom: 1px solid #404040;
+            font-family: monospace;
+        }
+        .code-content {
+            margin-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ID 生成策略說明文檔</h1>
+        
+        <div class="badges">
+            <img src="https://img.shields.io/badge/Project-FIN--2018--BC-orange" alt="Project">
+            <img src="https://img.shields.io/badge/CSS-2891C8?logo=css3" alt="CSS">
+            <img src="https://img.shields.io/badge/HTML-555?logo=htmlacademy" alt="HTML">
+            <img src="https://img.shields.io/badge/JavaScript-555?logo=javascript" alt="JavaScript">
+            <img src="https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap" alt="Bootstrap">
+            <img src="https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome" alt="Font Awesome">
+            <img src="https://img.shields.io/badge/JSON-555?logo=json" alt="JSON">
+            <img src="https://img.shields.io/badge/Flatpickr-777" alt="Flatpickr">
+            <img src="https://img.shields.io/badge/Prism--JSON--Highlight-2891C8" alt="Prism JSON Highlight">
+        </div>
+
+        <h2>目的</h2>
+        <h3>使得將來實現數據回寫 JSON 時會更加容易和可靠</h3>
+        <ul>
+            <li>ID 基於數據結構生成，所以相同的節點每次渲染都會得到相同的 ID</li>
+            <li>ID 更有意義，包含了節點的層級和位置信息</li>
+            <li>即使 JSON 內容變化，只要節點的基本特徵（層級、ID、索引）保持不變，ID 就會保持一致</li>
+            <li>便於調試和追蹤特定元素</li>
+            <li>可保存成完整的標案 JSON 文檔</li>
+        </ul>
+
+        <h2>節點路徑生成函數 (getNodePath)</h2>
+        
+        <div class="code-container">
+            <div class="code-title">JavaScript 函數實現</div>
+            <pre class="code-content"><code class="language-javascript">const getNodePath = (node) => {
+    let path = [];
+    if (node.signlevel) path.push(`L${node.signlevel}`);
+    if (node.level) path.push(`N${node.level}`);
+    if (typeof node.index !== 'undefined') path.push(`I${node.index}`);
+    return path.join('-');
+};</code></pre>
+        </div>
+
+        <h3>路徑組成</h3>
+        <ul>
+            <li><code>L</code>: signlevel 的前綴，表示簽核層級</li>
+            <li><code>N</code>: level 的前綴，表示節點層級</li>
+            <li><code>I</code>: index 的前綴，表示節點索引</li>
+        </ul>
+
+        <p>例如：<code>L1-N2-I0</code> 表示：</p>
+        <ul>
+            <li>簽核層級 (signlevel) 為 1</li>
+            <li>節點層級 (level) 為 2</li>
+            <li>節點索引 (index) 為 0</li>
+        </ul>
+
+        <h2>Dataset 屬性使用</h2>
+
+        <h3>dataset.nodePath</h3>
+        <p>為了方便追蹤和回寫數據，我們在 DOM 元素上使用 <code>dataset.nodePath</code> 保存節點路徑：</p>
+
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">element.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <p>這樣可以直接從 DOM 元素獲取節點路徑 (追蹤每個簽核項目的完整路徑)，例如：</p>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">const nodePath = element.dataset.nodePath;  // 例如：'L1-N2-I0'</code></pre>
+        </div>
+
+        <h2>已添加唯一 ID 的元件</h2>
+
+        <h3>ID 格式說明</h3>
+        <p>所有元素的 ID 都基於 nodeId 生成，格式為：<code>[元素類型]-[nodeId]</code></p>
+        <p>例如，對於 nodeId = "L1-N2-I0"：</p>
+        <ul>
+            <li>文字輸入框：<code>flex-L1-N2-I0</code> : <code>(flex-[層級]-[ID]-[索引])</code></li>
+            <li>下拉選單：<code>select-L1-N2-I0</code> : <code>(select-[層級]-[ID]-[索引])</code></li>
+            <li>簽核者欄位：<code>signer-L1-N2-I0</code> : <code>(signer-[層級]-[ID]-[索引])</code></li>
+            <li>日期欄位：<code>date-L1-N2-I0</code> : <code>(date-[層級]-[ID]-[索引])</code></li>
+        </ul>
+
+        <h3>ID 格式規範</h3>
+        <p>為了確保 ID 的一致性和可追蹤性，我們應該遵循以下規則：</p>
+
+        <h4>1. 簽核層級格式：</h4>
+        <ul>
+            <li>初審：使用 <code>L1</code></li>
+            <li>複審：使用 <code>L1-2</code>（不要使用 <code>LN1-2</code>）</li>
+            <li>未來如有三審：使用 <code>L1-3</code>（依此類推）</li>
+        </ul>
+
+        <h4>2. ID 組成順序：</h4>
+        <div class="code-container">
+            <pre class="code-content"><code class="language-markup">[元素類型]-L[簽核層級]-N[節點層級]-I[索引]</code></pre>
+        </div>
+
+        <h4>3. 範例說明：</h4>
+        <ul>
+            <li>初審下拉選單：<code>select-L1-N5-I0</code></li>
+            <li>複審下拉選單：<code>select-L1-2-N5-I0</code></li>
+            <li>❌ 錯誤格式：<code>select-LN1-2-N5-I0</code>（不要使用）</li>
+        </ul>
+
+        <h4>4. 優點：</h4>
+        <ul>
+            <li>保持格式一致性</li>
+            <li>便於程式解析</li>
+            <li>確保資料回寫準確性</li>
+            <li>減少維護成本</li>
+        </ul>
+
+        <h3>實際案例："實驗室名稱" 和 "有效日期"</h3>
+
+        <h4>1. "有效日期" 節點</h4>
+        <p>位於 JSON 中的 "有效日期" 節點：</p>
+        <ul>
+            <li>層級：level = "5"</li>
+            <li>初審層級：signlevel = "1"</li>
+            <li>複審層級：signlevel = "1-2"</li>
+            <li>索引位置：為第一個子節點，index = 0</li>
+        </ul>
+
+        <p>其相關元素的 ID：</p>
+        <h5>初審相關：</h5>
+        <ul>
+            <li>文字輸入框：<code>flex-L1-N5-I0</code></li>
+            <li>下拉選單：<code>select-L1-N5-I0</code></li>
+            <li>簽核者欄位：<code>signer-L1-N5-I0</code></li>
+            <li>日期欄位：<code>date-L1-N5-I0</code></li>
+        </ul>
+
+        <h5>複審相關：</h5>
+        <ul>
+            <li>下拉選單：<code>select-L1-2-N5-I0</code></li>
+            <li>簽核者欄位：<code>signer-L1-2-N5-I0</code></li>
+            <li>日期欄位：<code>date-L1-2-N5-I0</code></li>
+        </ul>
+
+        <p>JSON 中的簽核資訊：</p>
+        <div class="code-container">
+            <div class="code-title">JSON 節點示例</div>
+            <pre class="code-content"><code class="language-json">{
+  "title": "有效日期",
+  "signchildren": [
+    {
+      "show": "Y",
+      "signlevel": "1",
+      "Y/N/NA": "Y",
+      "signer": "王小明",
+      "signdate": "2024-12-19",
+      "signchildren": [
+        {
+          "show": "Y",
+          "signlevel": "1-2",
+          "Y/N/NA": "Y",
+          "signer": "李大華",
+          "signdate": "2024-12-19",
+          "signchildren": []
+        }
+      ]
+    }
+  ]
+}</code></pre>
+        </div>
+
+        <h4>2. "實驗室名稱" 節點</h4>
+        <p>位於 JSON 中的 "實驗室名稱" 節點：</p>
+        <ul>
+            <li>層級：level = "5"</li>
+            <li>初審層級：signlevel = "1"</li>
+            <li>複審層級：signlevel = "1-2"</li>
+            <li>索引位置：為第二個子節點，index = 1</li>
+        </ul>
+
+        <p>其相關元素的 ID：</p>
+        <h5>初審相關：</h5>
+        <ul>
+            <li>文字輸入框：<code>flex-L1-N5-I1</code></li>
+            <li>下拉選單：<code>select-L1-N5-I1</code></li>
+            <li>簽核者欄位：<code>signer-L1-N5-I1</code></li>
+            <li>日期欄位：<code>date-L1-N5-I1</code></li>
+        </ul>
+
+        <h5>複審相關：</h5>
+        <ul>
+            <li>下拉選單：<code>select-L1-2-N5-I1</code></li>
+            <li>簽核者欄位：<code>signer-L1-2-N5-I1</code></li>
+            <li>日期欄位：<code>date-L1-2-N5-I1</code></li>
+        </ul>
+
+        <p>JSON 中的簽核資訊：</p>
+        <div class="code-container">
+            <div class="code-title">JSON 節點示例</div>
+            <pre class="code-content"><code class="language-json">{
+  "title": "實驗室名稱",
+  "signchildren": [
+    {
+      "show": "Y",
+      "signlevel": "1",
+      "Y/N/NA": "Y",
+      "signer": "王小明",
+      "signdate": "2024-12-19",
+      "signchildren": [
+        {
+          "show": "Y",
+          "signlevel": "1-2",
+          "Y/N/NA": "Y",
+          "signer": "李大華",
+          "signdate": "2024-12-19",
+          "signchildren": []
+        }
+      ]
+    }
+  ]
+}</code></pre>
+        </div>
+
+        <h3>使用這些 ID 的示例：</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">// 有效日期相關操作
+// 初審
+const validDateInput = document.getElementById('flex-L1-N5-I0').value;
+const validDateApprovalStatus = document.getElementById('select-L1-N5-I0').value;
+const validDateApprover = document.getElementById('signer-L1-N5-I0').textContent;
+const validDateApprovalDate = document.getElementById('date-L1-N5-I0').textContent;
+
+// 複審
+const validDateSecondApprovalStatus = document.getElementById('select-L1-2-N5-I0').value;
+const validDateSecondApprover = document.getElementById('signer-L1-2-N5-I0').textContent;
+const validDateSecondApprovalDate = document.getElementById('date-L1-2-N5-I0').textContent;
+
+// 實驗室名稱相關操作
+// 初審
+const labNameInput = document.getElementById('flex-L1-N5-I1').value;
+const labApprovalStatus = document.getElementById('select-L1-N5-I1').value;
+const labApprover = document.getElementById('signer-L1-N5-I1').textContent;
+const labApprovalDate = document.getElementById('date-L1-N5-I1').textContent;
+
+// 複審
+const labSecondApprovalStatus = document.getElementById('select-L1-2-N5-I1').value;
+const labSecondApprover = document.getElementById('signer-L1-2-N5-I1').textContent;
+const labSecondApprovalDate = document.getElementById('date-L1-2-N5-I1').textContent;</code></pre>
+        </div>
+
+        <h2>元件清單及其 ID 設置</h2>
+
+        <h3>1. 簽核項目容器</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">signItem.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <h3>2. 文字輸入框</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">flexInput.id = `flex-${nodeId}`;
+flexInput.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <h3>3. 下拉選單</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">select.id = `select-${nodeId}`;
+select.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <h3>4. 簽核者欄位</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">signerSpan.id = `signer-${nodeId}`;
+signerSpan.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <h3>5. 日期欄位</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">dateSpan.id = `date-${nodeId}`;
+dateSpan.dataset.nodePath = nodeId;</code></pre>
+        </div>
+
+        <h3>ID 查找示例</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">// 查找特定節點的文字輸入框
+const flexInput = document.getElementById('flex-L1-N2-I0');
+
+// 查找特定節點的下拉選單
+const select = document.getElementById('select-L1-N2-I0');
+
+// 查找特定節點的簽核者欄位
+const signer = document.getElementById('signer-L1-N2-I0');
+
+// 查找特定節點的日期欄位
+const date = document.getElementById('date-L1-N2-I0');</code></pre>
+        </div>
+
+        <h2>JSON 回寫功能的優勢</h2>
+
+        <h3>1. 精確定位節點</h3>
+        <p>可以通過 nodePath 快速找到對應的 DOM 元素：</p>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">const elements = document.querySelectorAll('[data-node-path="L1-N2-I0"]');</code></pre>
+        </div>
+
+        <h3>2. 數據追蹤</h3>
+        <ul>
+            <li>每個簽核項目都有完整的路徑信息</li>
+            <li>可以輕鬆追蹤數據的變化和來源</li>
+        </ul>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">const nodePath = element.dataset.nodePath;  // 例如：'L1-N2-I0'</code></pre>
+        </div>
+
+        <h3>3. 數據回寫</h3>
+        <ul>
+            <li>可以根據 nodePath 準確定位到 JSON 中對應的節點</li>
+            <li>支持複雜的多層級節點結構</li>
+            <li>便於實現數據的雙向綁定</li>
+        </ul>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">function updateJSON(nodePath, data) {
+    // 根據 nodePath 找到對應的 JSON 節點
+    // 更新節點數據
+    // 保存更新後的 JSON
+}</code></pre>
+        </div>
+
+        <h3>4. 維護性</h3>
+        <ul>
+            <li>ID 結構清晰，便於調試和維護</li>
+            <li>支持 JSON 內容的動態變化</li>
+            <li>確保數據一致性</li>
+        </ul>
+
+        <h2>使用示例</h2>
+
+        <h3>查找特定節點的元素</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">// 查找特定路徑的所有相關元素
+const elements = document.querySelectorAll('[data-node-path="L1-N2-I0"]');
+
+// 查找特定類型的元素
+const selectElement = document.querySelector('select[data-node-path="L1-N2-I0"]');
+const signerElement = document.querySelector('span[id^="signer-"][data-node-path="L1-N2-I0"]');</code></pre>
+        </div>
+
+        <h3>數據回寫</h3>
+        <div class="code-container">
+            <div class="code-title">JavaScript 代碼示例</div>
+            <pre class="code-content"><code class="language-javascript">function updateJSON(nodePath, data) {
+    // 根據 nodePath 找到對應的 JSON 節點
+    const node = findNodeByPath(jsonData, nodePath);
+    
+    // 更新節點數據
+    Object.assign(node, data);
+    
+    // 保存更新後的 JSON
+    saveJSON(jsonData);
+}</code></pre>
+        </div>
+    </div>
+    <script>
+        // 初始化 Prism.js
+        Prism.highlightAll();
+    </script>
+</body>
+</html>

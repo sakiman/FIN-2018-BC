@@ -1,5 +1,15 @@
 # ID 生成策略說明文檔
 
+![](https://img.shields.io/badge/Project-FIN--2018--BC-orange)
+![](https://img.shields.io/badge/CSS-2891C8?logo=css3)
+![](https://img.shields.io/badge/HTML-555?logo=htmlacademy)
+![](https://img.shields.io/badge/JavaScript-555?logo=javascript)
+![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap)
+![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome)
+![](https://img.shields.io/badge/JSON-555?logo=json)
+![](https://img.shields.io/badge/Flatpickr-777)
+![](https://img.shields.io/badge/Prism--JSON--Highlight-2891C8)
+
 ## 目的
 ### 使得將來實現數據回寫 JSON 時會更加容易和可靠
 - ID 基於數據結構生成，所以相同的節點每次渲染都會得到相同的 ID

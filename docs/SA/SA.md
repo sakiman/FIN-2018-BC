@@ -6,7 +6,9 @@
 ![](https://img.shields.io/badge/JavaScript-555?logo=javascript)
 ![](https://img.shields.io/badge/Bootstrap-555?logo=reactbootstrap)
 ![](https://img.shields.io/badge/Font%20Awesome-purple?logo=fontawesome)
-![](https://img.shields.io/badge/JSON-555?logo=json) ![](https://img.shields.io/badge/Flatpickr-777)
+![](https://img.shields.io/badge/JSON-555?logo=json)
+![](https://img.shields.io/badge/Flatpickr-777)
+![](https://img.shields.io/badge/Prism--JSON--Highlight-2891C8)
 
 ## 系統架構文件
 
