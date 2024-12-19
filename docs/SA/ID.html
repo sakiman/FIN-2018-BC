@@ -129,6 +129,17 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
+        /* 修正程式碼縮排問題 */
+        pre[class*="language-"] {
+            padding: 1em;
+            margin: 0;
+        }
+        pre[class*="language-"] > code {
+            padding-left: 0 !important;
+        }
+        code[class*="language-"] {
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -351,7 +362,8 @@
         <h3>使用這些 ID 的示例：</h3>
         <div class="code-container">
             <div class="code-title">JavaScript 代碼示例</div>
-            <pre class="code-content"><code class="language-javascript">// 有效日期相關操作
+            <pre class="code-content"><code class="language-javascript">
+// 有效日期相關操作
 // 初審
 const validDateInput = document.getElementById('flex-L1-N5-I0').value;
 const validDateApprovalStatus = document.getElementById('select-L1-N5-I0').value;
