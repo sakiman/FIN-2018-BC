@@ -87,20 +87,79 @@ graph TB
 ```json
 {
   "level": "0",
-  "title": "根節點",
+  "title": "政府標單或法人採購標案 - 印鑑用印前申請之檢核表",
+  "showflexstrings": "N",
+  "showflexdates": "N",
+  "flexstrings": null,
+  "flexdate": null,
+  "signchildren": [],
   "children": [
     {
       "level": "1",
-      "title": "一級節點",
+      "title": "標案投標/合約簽屬前用印之作業",
+      "showflexstrings": "N",
+      "showflexdates": "N",
+      "flexstrings": null,
+      "flexdate": null,
+      "signchildren": [],
       "children": [
         {
           "level": "2",
-          "title": "二級節點",
-          "signchildren": [
+          "title": "是否已確實依招標文件規定審查投標文件",
+          "showflexstrings": "N",
+          "showflexdates": "N",
+          "flexstrings": null,
+          "flexdate": null,
+          "signchildren": [],
+          "children": [
             {
-              "show": "Y",
-              "signlevel": "1",
-              "Y/N/NA": null
+              "level": "3",
+              "title": "實驗室名稱",
+              "showflexstrings": "Y",
+              "showflexdates": "N",
+              "flexstrings": null,
+              "flexdate": null,
+              "signchildren": [],
+              "children": [
+                {
+                  "level": "4",
+                  "title": "實驗室資訊",
+                  "showflexstrings": "Y",
+                  "showflexdates": "N",
+                  "flexstrings": null,
+                  "flexdate": null,
+                  "signchildren": [],
+                  "children": [
+                    {
+                      "level": "5",
+                      "title": "有效日期",
+                      "showflexstrings": "Y",
+                      "showflexdates": "N",
+                      "flexstrings": null,
+                      "flexdate": null,
+                      "signchildren": [
+                        {
+                          "show": "Y",
+                          "signlevel": "1",
+                          "Y/N/NA": "Y",
+                          "signer": "王小明",
+                          "signdate": "2024-12-19",
+                          "signchildren": [
+                            {
+                              "show": "Y",
+                              "signlevel": "1-2",
+                              "Y/N/NA": "Y",
+                              "signer": "李大華",
+                              "signdate": "2024-12-19",
+                              "signchildren": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -109,6 +168,44 @@ graph TB
   ]
 }
 ```
+
+### 主要欄位說明
+
+1. **基本節點屬性**
+   - `level`: 節點層級（"0" ~ "5"）
+   - `title`: 節點標題
+   - `showflexstrings`: 是否顯示文字輸入框（"Y"/"N"）
+   - `showflexdates`: 是否顯示日期選擇器（"Y"/"N"）
+   - `children`: 子節點陣列
+
+2. **簽核相關屬性**
+   - `signchildren`: 簽核資訊陣列
+     - `show`: 是否顯示簽核欄位（"Y"/"N"）
+     - `signlevel`: 簽核層級（"1" 為初審，"1-2" 為複審）
+     - `Y/N/NA`: 審核結果
+     - `signer`: 簽核者姓名
+     - `signdate`: 簽核日期
+
+3. **補充欄位**
+   - `flexstrings`: 文字輸入框的值
+   - `flexdate`: 日期選擇器的值
+
+### 資料特點
+
+1. **層級結構**
+   - 使用樹狀結構組織資料
+   - 最多支持 5 層節點
+   - 每個節點可以有多個子節點
+
+2. **簽核機制**
+   - 支持初審和複審兩層簽核
+   - 每層簽核都有獨立的狀態和資訊
+   - 簽核資訊包含簽核者和日期
+
+3. **擴展性**
+   - 可根據需求顯示/隱藏輸入欄位
+   - 支持自定義文字和日期輸入
+   - 結構設計便於未來擴展
 
 ## 用戶界面
 
