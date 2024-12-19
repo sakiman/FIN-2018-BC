@@ -389,7 +389,7 @@ input.date-input:focus {
 
 .sign-item.disabled {
     opacity: 0.7;
-    background-color: #f8f8f8;
+    background-color: #dfdcdc;
 }
 
 .sign-item.disabled .sign-field select {
@@ -1001,4 +1001,10 @@ label {
 
 .dark-theme label {
     color: #888;
+}
+
+/* 標單提出者、初審標單者輸入框樣式 */
+#bidSubmitter,
+#bidReviewer {
+    width: 215px !important;
 }
