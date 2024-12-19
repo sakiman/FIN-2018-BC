@@ -382,22 +382,36 @@ function createApprovalButtons(node) {
     managerButton.onclick = function (e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
-            this.classList.add('approved');
-            this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
-            
-            // 禁用初審退回按鈕
-            const returnButton = this.parentElement.querySelector('[data-type="firstReview"]');
-            returnButton.disabled = true;
-            returnButton.classList.add('disabled');
+            // 顯示確認對話框
+            Swal.fire({
+                title: '確認審核',
+                text: '確定要進行初審主管審核嗎？',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: '確定',
+                cancelButtonText: '取消',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.classList.add('approved');
+                    this.innerHTML = '<i class="fas fa-check-double"></i> 初審主管已審核';
+                    
+                    // 禁用初審退回按鈕
+                    const returnButton = this.parentElement.querySelector('[data-type="firstReview"]');
+                    returnButton.disabled = true;
+                    returnButton.classList.add('disabled');
 
-            // 啟用 BU Head 按鈕
-            const headButton = this.parentElement.querySelector('.approval-button.head');
-            const headReturnButton = this.parentElement.querySelector('[data-type="buHead"]');
-            
-            headButton.disabled = false;
-            headButton.classList.remove('disabled');
-            headReturnButton.disabled = false;
-            headReturnButton.classList.remove('disabled');
+                    // 啟用 BU Head 按鈕
+                    const headButton = this.parentElement.querySelector('.approval-button.head');
+                    const headReturnButton = this.parentElement.querySelector('[data-type="buHead"]');
+                    
+                    headButton.disabled = false;
+                    headButton.classList.remove('disabled');
+                    headReturnButton.disabled = false;
+                    headReturnButton.classList.remove('disabled');
+                }
+            });
         }
     };
 
@@ -423,13 +437,27 @@ function createApprovalButtons(node) {
     headButton.onclick = function (e) {
         e.stopPropagation();
         if (!this.classList.contains('approved')) {
-            this.classList.add('approved');
-            this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
-            
-            // 禁用 BU Head 退回按鈕
-            const returnButton = this.parentElement.querySelector('[data-type="buHead"]');
-            returnButton.disabled = true;
-            returnButton.classList.add('disabled');
+            // 顯示確認對話框
+            Swal.fire({
+                title: '確認審核',
+                text: '確定要進行 BU Head 審核嗎？',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: '確定',
+                cancelButtonText: '取消',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.classList.add('approved');
+                    this.innerHTML = '<i class="fas fa-check-double"></i> BU Head 已審核';
+                    
+                    // 禁用 BU Head 退回按鈕
+                    const returnButton = this.parentElement.querySelector('[data-type="buHead"]');
+                    returnButton.disabled = true;
+                    returnButton.classList.add('disabled');
+                }
+            });
         }
     };
 

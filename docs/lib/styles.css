@@ -492,6 +492,7 @@ input.date-input:focus {
     align-items: center;
     flex-shrink: 0;
     margin-left: auto;
+    margin-top: 4px;
     position: relative;
     z-index: 2;
 }
